@@ -19,32 +19,31 @@
       <!-- <pre>{{$data.newdocument}}</pre> -->
       <div class="row" >
           <table  class="table table table-striped ml-5 mt-5" >
-                <th></th>
+                <th>Operation</th>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Password</th>
+                <th>Document</th>
+                <th>StoragePlace</th>
+                <th>OriginalUser</th>
+                <th>LatestUser</th>
 
           <tr>                
-                <td>Register</td>
+                <td>Create</td>
                 <td>Auto Id</td>
-                <td><input type="text" class="form-control" v-model="newname" ></td>
-                <td><input type="text" class="form-control" v-model="newpassword" ></td>
+                <td><input type="text" class="form-control" v-model="newdocument" ></td>
+                <td><input type="text" class="form-control" v-model="newstorageplace" ></td>
+                <td><input type="text" class="form-control" v-model="neworiginaluser" ></td>
+                <td><input type="text" class="form-control" v-model="newlatestuser" ></td>
           </tr>
-          <tr>                
-                <td>Modify</td>
-                <td><input type="text" class="form-control" v-model="modifiedid" ></td>
-                <td><input type="text" class="form-control" v-model="modifiedsname"></td>
-                <td><input type="text" class="form-control" v-model="modifiedpassword" ></td>
-          </tr>
-          <tr v-for="user in users">
+          <tr v-for="storeditem in storeditems">
                 <th></th>
-                <th>{{user.id}}</th>
-                <th>{{user.name}}</th>
-                <th>{{user.password}}</th>
+                <th>{{storeditem.id}}</th>
+                <th>{{storeditem.document}}</th>
+                <th>{{storeditem.storageplace}}</th>
+                <th>{{storeditem.originaluser}}</th>
+                <th>{{storeditem.latestuser}}</th>
           </tr>
           </table>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="userregister">Register</button>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="usermodify">Modify</button> 
+          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="registerandqr">QR Create</button>
           
 
       </div>
@@ -55,7 +54,7 @@
 
     </div>
 
-    <script src="./js/input.js"></script>
+    <script src="./js/qrcreaterforcontent.js"></script>
   
     <div  id=idqr></div>
      </body>

@@ -1,3 +1,5 @@
+<!-- add place, create for QR for new place and existing place -->
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -19,32 +21,26 @@
       <!-- <pre>{{$data.newdocument}}</pre> -->
       <div class="row" >
           <table  class="table table table-striped ml-5 mt-5" >
-                <th></th>
+                <th>Operation</th>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Password</th>
-
+                <th>New Storage Place</th>
           <tr>                
-                <td>Register</td>
+                <td><button type="button" class="btn btn-outline-primary v-on:click="registerplace">QR Create</button></td>
                 <td>Auto Id</td>
-                <td><input type="text" class="form-control" v-model="newname" ></td>
-                <td><input type="text" class="form-control" v-model="newpassword" ></td>
+                <td><input type="text" class="form-control" v-model="registerplace" ></td>
           </tr>
-          <tr>                
-                <td>Modify</td>
-                <td><input type="text" class="form-control" v-model="modifiedid" ></td>
-                <td><input type="text" class="form-control" v-model="modifiedsname"></td>
-                <td><input type="text" class="form-control" v-model="modifiedpassword" ></td>
+          <tr>
+                <div  id=idqr></div>
+
+
           </tr>
-          <tr v-for="user in users">
+          <tr v-for="storeditem in storeditems">
                 <th></th>
-                <th>{{user.id}}</th>
-                <th>{{user.name}}</th>
-                <th>{{user.password}}</th>
+                <th>{{storeditem.id}}</th>
+                <th>{{storeditem.storageplace}}</th>
           </tr>
           </table>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="userregister">Register</button>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="usermodify">Modify</button> 
+          
           
 
       </div>
@@ -55,7 +51,7 @@
 
     </div>
 
-    <script src="./js/input.js"></script>
+    <script src="./js/qrcreaterforcontent.js"></script>
   
     <div  id=idqr></div>
      </body>
