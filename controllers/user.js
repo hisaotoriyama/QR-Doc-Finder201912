@@ -1,5 +1,8 @@
+// @file vuetodo.js <controllers>
+// load ORM nmodule
 let db = require('../models/index')
 
+// REST controller definitions
 module.exports = {
 
 create: (req, res) => {

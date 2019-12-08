@@ -6,7 +6,7 @@ var app = new Vue({
     },
 
     methods: {
-      login: function(){
+      loginandqrreader: function(){
         if (this.loginName == "") return;
         const data = {
           "loginName": this.loginName,
@@ -21,12 +21,13 @@ var app = new Vue({
         method: "POST", 
         body: JSON.stringify(data) 
         };
-        fetch('/login', d)
+        //ok
+        fetch('/logins', d)
         .then((e) => {
             console.log(e)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "../qrreader.html" 
+          location.href = "../private/qrreader.html" 
         })
 
       }

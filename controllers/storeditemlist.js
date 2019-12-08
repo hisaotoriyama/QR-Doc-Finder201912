@@ -5,13 +5,23 @@ let db = require('../models/index')
 // REST controller definitions
 module.exports = {
     index: (req, res) => {
-
-
-
-
-
-
+        db.storeditemlist.findAll(
+            // { include: [db.user]}
+            )            
+        .then((d) => {
+            let data = d.map((p) => {
+                  return {
+                    id: p.id,
+                    document: p.document,
+                    storageplace: p.storegeplace,
+                    originaluser: p.originaluser,
+                    latestuser: p.latestuser
+                }
+            })
+            res.json(data)
+        })
     },
+
     new: (req, res) => {
         res.send("new forum");
     },

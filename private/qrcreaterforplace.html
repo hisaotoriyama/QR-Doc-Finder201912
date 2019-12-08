@@ -18,26 +18,20 @@
 
   <body>
     <div id="app">
-      <!-- <pre>{{$data.newdocument}}</pre> -->
       <div class="row" >
           <table  class="table table table-striped ml-5 mt-5" >
                 <th>Operation</th>
                 <th>ID</th>
                 <th>New Storage Place</th>
           <tr>                
-                <td><button type="button" class="btn btn-outline-primary v-on:click="registerplace">QR Create</button></td>
+                <td><button type="button" class="btn btn-outline-primary" v-on:click="addplace">QR Create</button></td>
                 <td>Auto Id</td>
-                <td><input type="text" class="form-control" v-model="registerplace" ></td>
+                <td><input type="text" class="form-control" v-model="newstorageplace" ></td>
           </tr>
-          <tr>
-                <div  id=idqr></div>
-
-
-          </tr>
-          <tr v-for="storeditem in storeditems">
+          <tr v-for="place in places">
                 <th></th>
-                <th>{{storeditem.id}}</th>
-                <th>{{storeditem.storageplace}}</th>
+                <th>{{place.id}}</th>
+                <th>{{place.storageplace}}</th>
           </tr>
           </table>
           
@@ -51,9 +45,9 @@
 
     </div>
 
-    <script src="./js/qrcreaterforcontent.js"></script>
+    <script src="./js/qrcreaterforplace.js"></script>
   
-    <div  id=idqr></div>
+
      </body>
 
 </html>

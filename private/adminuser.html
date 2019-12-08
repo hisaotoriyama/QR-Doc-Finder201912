@@ -25,15 +25,16 @@
                 <th>Password</th>
 
           <tr>                
-                <td>Register</td>
+                <td><button type="button" class="btn btn-outline-primary" v-on:click="userregister">Register</button></td>
                 <td>Auto Id</td>
                 <td><input type="text" class="form-control" v-model="newname" ></td>
                 <td><input type="text" class="form-control" v-model="newpassword" ></td>
           </tr>
           <tr>                
-                <td>Modify</td>
+                <td><button type="button" class="btn btn-outline-primary" v-on:click="usermodify">Modify</button> 
+                </td>
                 <td><input type="text" class="form-control" v-model="modifiedid" ></td>
-                <td><input type="text" class="form-control" v-model="modifiedsname"></td>
+                <td><input type="text" class="form-control" v-model="modifiedname"></td>
                 <td><input type="text" class="form-control" v-model="modifiedpassword" ></td>
           </tr>
           <tr v-for="user in users">
@@ -43,8 +44,7 @@
                 <th>{{user.password}}</th>
           </tr>
           </table>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="userregister">Register</button>
-          <button type="button" class="btn btn-outline-primary ml-5 mt-5" v-on:click="usermodify">Modify</button> 
+          
           
 
       </div>
@@ -55,9 +55,8 @@
 
     </div>
 
-    <script src="./js/input.js"></script>
+    <script src="./js/adminuser.js"></script>
   
-    <div  id=idqr></div>
      </body>
 
 </html>
