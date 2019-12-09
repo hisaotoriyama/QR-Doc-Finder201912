@@ -10,4 +10,8 @@ db.place.create({
 })
 db.place.create({
   name: "B-2"
+})              
+db.place.create({
+  name: "B-3"
 })
+ 

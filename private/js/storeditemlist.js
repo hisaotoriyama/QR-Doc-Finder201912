@@ -105,26 +105,26 @@ var app = new Vue({
             // this.newstorageplace = ""
         },
 
-    computed: {
-        readall: function () {
-            const headers = {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            };
-            const d = {
-                headers: headers,
-                method: "GET"
-            };
-            var self = this;
-            fetch('/storeditemlists', d)
-                .then((e) => {
-                    console.log(e)
-                    e.json().then((j) => {
-                        self.storeditemlists = j;
-                    })
-                })
-        },
-    }
+    // computed: {
+    //     readall: function () {
+    //         const headers = {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         };
+    //         const d = {
+    //             headers: headers,
+    //             method: "GET"
+    //         };
+    //         var self = this;
+    //         fetch('/storeditemlists', d)
+    //             .then((e) => {
+    //                 console.log(e)
+    //                 e.json().then((j) => {
+    //                     self.storeditemlists = j;
+    //                 })
+    //             })
+    //     },
+    // }
 
 
     }
