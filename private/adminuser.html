@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    
-    <!-- <script src="jquery.min.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+  <!-- <script src="jquery.min.js"></script>
     <script src="jquery.qrcode.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
-  </head>
+</head>
 
-  <body>
-    <div id="app">
-      <!-- <pre>{{$data.newdocument}}</pre> -->
-      <div class="row" >
-          <table  class="table table table-striped ml-5 mt-5" >
-                <th></th>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Password</th>
+<body>
+  <div id="app">
+    <!-- <pre>{{$data.newdocument}}</pre> -->
+    <div class="row">
+      <table class="table table table-striped ml-5 mt-5">
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
 
-          <tr>                
-                <td><button type="button" class="btn btn-outline-primary" v-on:click="userregister">Register</button></td>
-                <td>Auto Id</td>
-                <td><input type="text" class="form-control" v-model="newname" ></td>
-                <td><input type="text" class="form-control" v-model="newpassword" ></td>
-          </tr>
-          <tr>                
-                <td><button type="button" class="btn btn-outline-primary" v-on:click="usermodify">Modify</button> 
-                </td>
-                <td><input type="text" class="form-control" v-model="modifiedid" ></td>
-                <td><input type="text" class="form-control" v-model="modifiedname"></td>
-                <td><input type="text" class="form-control" v-model="modifiedpassword" ></td>
-          </tr>
-          <tr v-for="user in users">
-                <th></th>
-                <th>{{user.id}}</th>
-                <th>{{user.name}}</th>
-                <th>{{user.password}}</th>
-          </tr>
-          </table>
-          
-          
+        <tr>
+          <td><button type="button" class="btn btn-outline-primary" v-on:click="userregister">Register</button></td>
+          <td>Auto Id</td>
+          <td><input type="text" class="form-control" v-model="newname"></td>
+          <td><input type="text" class="form-control" v-model="newpassword"></td>
+        </tr>
+        <tr>
+          <td><button type="button" class="btn btn-outline-primary" v-on:click="usermodify">Modify</button>
+          </td>
+          <td><input type="text" class="form-control" v-model="modifiedid"></td>
+          <td><input type="text" class="form-control" v-model="modifiedname"></td>
+          <td><input type="text" class="form-control" v-model="modifiedpassword"></td>
+        </tr>
+        <tr v-for="user in users">
+          <th></th>
+          <th>{{user.id}}</th>
+          <th>{{user.name}}</th>
+          <th>{{user.password}}</th>
+        </tr>
+      </table>
 
-      </div>
-      
-      <div class="row" >
-        <div id="qrprint" class="ml-5 mt-5"></div>
-      </div>
+
 
     </div>
 
-    <script src="./js/adminuser.js"></script>
-  
-     </body>
+    <div class="row">
+      <div id="qrprint" class="ml-5 mt-5"></div>
+    </div>
+
+  </div>
+
+  <script src="./js/adminuser.js"></script>
+
+</body>
 
 </html>

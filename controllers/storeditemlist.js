@@ -7,35 +7,35 @@ module.exports = {
     index: (req, res) => {
         db.storeditemlist.findAll(
             // { include: [db.user]}
-            )            
-        .then((d) => {
-            let data = d.map((p) => {
-                  return {
-                    id: p.id,
-                    document: p.document,
-                    storageplace: p.storegeplace,
-                    originaluser: p.originaluser,
-                    latestuser: p.latestuser
-                }
+        )
+            .then((d) => {
+                let data = d.map((p) => {
+                    return {
+                        id: p.id,
+                        document: p.document,
+                        storageplace: p.storegeplace,
+                        originaluser: p.originaluser,
+                        latestuser: p.latestuser
+                    }
+                })
+                res.json(data)
             })
-            res.json(data)
-        })
     },
 
     new: (req, res) => {
         res.send("new forum");
     },
 
-    create: (req, res) => {  
+    create: (req, res) => {
         let data = {
-            storageplace:Number(req.body.storageplace)
-          }
-          db.place.create(data).then((p)=>{
+            storageplace: Number(req.body.storageplace)
+        }
+        db.place.create(data).then((p) => {
             res.json({
                 id: p.id,
                 storageplace: p.storageplace
-              })
-          })
+            })
+        })
         res.send(200)
     },
 
@@ -49,7 +49,6 @@ module.exports = {
         res.send("update forum " + req.params.forum);
     },
     delete: (req, res) => {
-       res.send("destroy forum " + req.params.forum);
+        res.send("destroy forum " + req.params.forum);
     }
 }
- 

@@ -16,16 +16,16 @@ module.exports = {
         res.send("new forum");
     },
 
-    create: (req, res) => {  
+    create: (req, res) => {
         let data = {
-            storageplace:Number(req.body.storageplace)
-          }
-          db.place.create(data).then((p)=>{
+            storageplace: Number(req.body.storageplace)
+        }
+        db.place.create(data).then((p) => {
             res.json({
                 id: p.id,
                 storageplace: p.storageplace
-              })
-          })
+            })
+        })
         res.send(200)
     },
 
@@ -39,7 +39,6 @@ module.exports = {
         res.send("update forum " + req.params.forum);
     },
     delete: (req, res) => {
-       res.send("destroy forum " + req.params.forum);
+        res.send("destroy forum " + req.params.forum);
     }
 }
- 
