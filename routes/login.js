@@ -17,8 +17,8 @@ router.post('/',(req, res) => {
         req.session.name=req.body.loginName
         req.session.password= req.body.loginPassword
         req.session.user_id = d.id
-            console.log(req.session.user_name)
-            console.log(req.session.user_password)
+            console.log(req.session.name)
+            console.log(req.session.password)
             console.log(req.session.user_id)
 
         // res.cookie('login',true)

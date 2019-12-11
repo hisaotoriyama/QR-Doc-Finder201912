@@ -27,7 +27,7 @@ var app = new Vue({
           console.log(e)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "../private/qrreader.html"
+          location.href = "/private/qrreader.html"
         })
 
     }

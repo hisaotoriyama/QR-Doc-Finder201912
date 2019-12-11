@@ -6,6 +6,8 @@ let session = require('express-session')
 let login = require('./routes/login')
 // let logout = require('./routes/logout')
 let bodyParser = require('body-parser');
+let path = require('path');
+
 
 // 重要
 let app = express()
@@ -37,8 +39,21 @@ app.resource('contents', require('./controllers/content'), { id: 'id' })
 app.use('/login', login)
 // app.use('/logout', logout)
 
+// これだとpublic / privateのだしわけができない
+//app.use(express.static('public'));
 
-app.use(express.static('public'));
+// こちらを使う
+let sessionCheck = (req, res, next) => {
+  if(req.session.name !== undefined) {
+      next();
+  } else {
+      res.redirect('/login.html')
+  }
+}
+app.use('/', express.static(path.join( __dirname, '/public')));
+app.use('/private', sessionCheck, express.static(path.join( __dirname, '/private' )) );
+
+
 // start application
 //app.listen(3000)
 var https = require('https');
@@ -54,22 +69,6 @@ var options = {
 
 let server = https.createServer(options, app)
 //nodeのモジュールのhttpsのメソッド。
-
-
-// let sessionCheck = (req, res, next) => {
-//         console.log(">>"+req.cookies.login)
-//         if(req.session.name) {
-//             next();  // これによりapp.use isLoginのあと(next)のexpress.static( path.join( __dirname, '/private' )) に移る。
-//         } else {
-//         //windows.alert("NameないしPasswordが異なっています")//→alert使えない。なぜ？？？？
-//         // redirectはサーバーサイド、main.jsのlocation.hrefはブラウザサイド 
-//             res.redirect('/login.html')
-//         }
-//     }
-
-
-// 下記の意味がよくわからない
-// app.use('/secure', sessionCheck, express.static(path.join( __dirname, '/public' )) );
 
 server.listen(port);
 
