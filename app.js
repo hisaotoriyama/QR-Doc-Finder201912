@@ -3,7 +3,7 @@ let Res = require('express-resource')
 // let cp = require('cookie-parser')
 let session = require('express-session')
 // let path = require('path')
-// let login = require('./controllers/login')
+let login = require('./routes/login')
 // let logout = require('./routes/logout')
 let bodyParser = require('body-parser');
 
@@ -27,12 +27,14 @@ app.use(session({
 // app.use(cp())
 
 //resourceの場合必ず”s"を入れること。あくまでもAPI/通信内部の世界だからsを気にすることはない。
-app.resource('logins', require('./controllers/login'), { id: 'id' })
 app.resource('storeditemlists', require('./controllers/storeditemlist'), { id: 'id' })
 app.resource('users', require('./controllers/user'), { id: 'id' })
 app.resource('places', require('./controllers/place'), { id: 'id' })
 app.resource('contents', require('./controllers/content'), { id: 'id' })
 
+//loginはresouce使ったCRUD不要。したがってroutesできる。
+// app.resource('logins', require('./controllers/login'), { id: 'id' })
+app.use('/login', login)
 // app.use('/logout', logout)
 
 

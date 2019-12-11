@@ -39,7 +39,7 @@ var app = new Vue({
       let idqr = i.id;
       console.log(idqr);
       $('#qrprint').html("");
-      $('#qrprint').qrcode({ width: 90, height: 90, text: '{"dorl":"d","id":idqr}' })
+      $('#qrprint').qrcode({ width: 90, height: 90, text: {"dorl":"d","id":3} })
     },
 
     readall: function () {

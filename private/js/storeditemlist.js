@@ -79,6 +79,7 @@ var app = new Vue({
                 return e.check == true
             })
             this.selectedstoreditemlists = sil;
+            location.href="../updatestoreditemlist.html"
             //     const data = {
             //     "storageplace": this.selectedstoreditemlist
             // };
