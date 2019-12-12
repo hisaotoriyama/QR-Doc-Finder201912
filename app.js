@@ -71,4 +71,3 @@ let server = https.createServer(options, app)
 //nodeのモジュールのhttpsのメソッド。
 
 server.listen(port);
-

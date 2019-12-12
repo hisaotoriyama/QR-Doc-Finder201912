@@ -22,7 +22,7 @@ var app = new Vue({
         body: JSON.stringify(data)
       };
       //ok
-      fetch('https://localhost:3001/login', d)
+      fetch('../login', d)
         .then((e) => {
           console.log(e)
           //その上で、location.href処理しsecureに移る。

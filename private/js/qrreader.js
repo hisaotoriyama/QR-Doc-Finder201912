@@ -10,7 +10,7 @@ var app = new Vue({
         // QRは(d or l)と番号のオブジェクト。d or lを読んだ上で、dの場合は書類に添付された（貼り付けされた）QRとして理解、lの場合は格納場所に添付されたQRとして理解する。
 
         dataexport: function () {
-            // console.log(this.globalData.QRdata)
+            console.log(this.globalData.QRdata)
             let j = JSON.parse(this.globalData.QRdata)
             switch (j.dorl) {
                 case 'd':
@@ -27,11 +27,12 @@ var app = new Vue({
                     };
 
                     var self = this;
-                    return fetch('https://localhost:3000/addstoreditems/' + j.id, d)
+                    return fetch('https://localhost:3001/storeditemlists/' + j.id, d)
                         .then((res) =>
                             res.json()
                                 .then((r) => {
                                 self.selectedqrcontent = r;
+                                console.log(this.selectedqrcontent)
                                 }))
                     this.globalData = "";
                     break;
@@ -56,7 +57,7 @@ var app = new Vue({
                         body: JSON.stringify(data2)
                     };
 
-                    fetch('https://localhost:3000/addstoreditems/' + j.id, d2)
+                    fetch('https://localhost:3001/storeditemlists/' + j.id, d2)
                         .then((res) => {
                             res.json().then((f) => {
                                 // ここから開始20191202 12PM PUTして戻ってくるところ。修正されるはず。

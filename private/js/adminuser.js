@@ -5,13 +5,14 @@ var app = new Vue({
     newpassword: "",
     modifiedid: "",
     modifiedname: "",
-    modifiedpassword: ""
+    modifiedpassword: "",
+    users:""
   },
 
 
   methods: {
     userregister: function () {
-      // if (this.newName == "") return;
+      if (this.newname == "") return;
       const data = {
         "newname": this.newname,
         "newpassword": this.newpassword
@@ -26,28 +27,24 @@ var app = new Vue({
         body: JSON.stringify(data)
       };
       var self = this;
-      fetch('/user', d)
+      fetch('/users', d)
         .then((e) => {
           e.json().then((j) => {
-            console.log(j);
             self.qrcreation(j)
           })
         }).then((k) => {
-          this.readall();
+          self.readall();
         })
         ;
       ;
-      this.neworiginaluser = "";
-      this.newdocument = "";
-      this.newstorageplace = "";
-      this.newlatestuser = ""
-
+      this.newname = "";
+      this.newpassword = "";
     },
 
     usermodify: function () {
       const data = {
-        "storageplace": this.modifiedstorageplace,
-        "latestuser": this.modifiedlatestuser
+        "name": this.modifiedname,
+        "password": this.modifiedpassword
       };
       const headers = {
         'Accept': 'application/json',
@@ -58,16 +55,18 @@ var app = new Vue({
         method: "PUT",
         body: JSON.stringify(data)
       };
-      return fetch('/user/' + this.modifiedid, d)
+      var self = this;
+      return fetch('/users/' + this.modifiedid, d)
         .then((e) => {
+          alert("GoodGood")
+          console.log(e)
           e.json().then((j) => {
-            this.readall();
-            this.modifiedlatestuser = "";
-            this.modifiedstorageplace = "";
-            this.modifiedid = ""
+            self.readall();
+            self.modifiedname = "";
+            self.modifiedpassword = "";
+            self.modifiedid = ""
           })
         })
-        ;;
     },
 
     readall: function () {
@@ -80,9 +79,10 @@ var app = new Vue({
         method: "GET"
       };
       var self = this;
-      fetch('/user', d).then((e) => {
+      fetch('/users', d).then((e) => {
         e.json().then((j) => {
-          self.storeditems = j;
+          // console.log(j)
+          self.users = j;
         })
       })
     },
