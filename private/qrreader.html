@@ -53,11 +53,22 @@
       <!-- 読み取り結果 from 88行-->
       <input id="result" v-model="globalData.QRdata" />
       <table class="table" class="itemList">
-        <button type="button" v-on:click="dataexport">QR Reader</button>
+        <button type="button" v-on:click="dataread">QR Read</button>
+        <button type="button" v-on:click="dataexport">Re-Storage</button>
       </table>
-      <pre>{{globalData.QRdata}}</pre>
 
-      <pre>{{$data.selectedqrcontent}}</pre>
+      <!-- <pre>
+          {{$data.Id}}
+      </pre> -->
+      <!-- <pre>
+          {{$data.document_id}}
+      </pre>
+      <pre>
+          {{$data.storageplace}}
+      </pre> -->
+      <!-- <pre>{{globalData.QRdata}}</pre>
+
+      <pre>{{$data.selectedqrcontent}}</pre> -->
 
     </div>
 
@@ -205,7 +216,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-  <script src="./js/qrreader.js"></script>
+  <script src="./js/modifiedqrreader.js"></script>
 
 </body>
 

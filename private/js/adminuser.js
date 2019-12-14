@@ -58,7 +58,6 @@ var app = new Vue({
       var self = this;
       return fetch('/users/' + this.modifiedid, d)
         .then((e) => {
-          alert("GoodGood")
           console.log(e)
           e.json().then((j) => {
             self.readall();
@@ -87,28 +86,28 @@ var app = new Vue({
       })
     },
 
-    selectdocs: function () {
-      const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-      const d = {
-        headers: headers,
-        method: "GET"
-      };
-      var self = this
-      // console.log(this.selectedid);
-      fetch('/addstoreditems/' + this.selectedid, d)
-        .then((r) => {
-          r.json().then((j) => {
-            console.log(j);
-            self.selectedoriginaluser = j.originaluser;
-            self.selecteddocument = j.document;
-            self.selectedstorageplace = j.storageplace;
-            self.selectedlatestuser = j.latestuser
-          })
-        })
-    },
+    // selectdocs: function () {
+    //   const headers = {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   };
+    //   const d = {
+    //     headers: headers,
+    //     method: "GET"
+    //   };
+    //   var self = this
+    //   // console.log(this.selectedid);
+    //   fetch('/addstoreditems/' + this.selectedid, d)
+    //     .then((r) => {
+    //       r.json().then((j) => {
+    //         console.log(j);
+    //         self.selectedoriginaluser = j.originaluser;
+    //         self.selecteddocument = j.document;
+    //         self.selectedstorageplace = j.storageplace;
+    //         self.selectedlatestuser = j.latestuser
+    //       })
+    //     })
+    // },
 
 
   }

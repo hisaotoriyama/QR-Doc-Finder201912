@@ -45,9 +45,21 @@ module.exports = {
     edit: (req, res) => {
         res.send("edit forum " + req.params.forum);
     },
+
     update: (req, res) => {
-        res.send("update forum " + req.params.forum);
+        db.storeditemlist.update({
+            storageplace:req.body.storageplace,
+            latestuser:req.body.latestuser
+        },{
+          where:{
+            document:req.params.id
+          }
+        }).then((p)=>{
+          let data = p
+          res.json(data)
+        })
     },
+    
     delete: (req, res) => {
         res.send("destroy forum " + req.params.forum);
     }

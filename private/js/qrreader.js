@@ -1,3 +1,5 @@
+import { ok } from "assert";
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -25,14 +27,15 @@ var app = new Vue({
                         headers: headers,
                         method: "GET"
                     };
-
+                    // console.log(j.id);
+                    // ok
                     var self = this;
                     return fetch('https://localhost:3001/storeditemlists/' + j.id, d)
                         .then((res) =>
                             res.json()
                                 .then((r) => {
                                 self.selectedqrcontent = r;
-                                console.log(this.selectedqrcontent)
+                                console.log(self.selectedqrcontent)
                                 }))
                     this.globalData = "";
                     break;
