@@ -21,12 +21,12 @@ module.exports = {
             storageplace: Number(req.body.storageplace)
         }
         db.place.create(data).then((p) => {
-            res.json({
+            res.status(200).json({
                 id: p.id,
                 storageplace: p.storageplace
             })
         })
-        res.send(200)
+///        res.send(200)
     },
 
     show: (req, res) => {

@@ -4,6 +4,7 @@ let Res = require('express-resource')
 let session = require('express-session')
 // let path = require('path')
 let login = require('./routes/login')
+let controlplace = require('./routes/controlplace')
 // let logout = require('./routes/logout')
 let bodyParser = require('body-parser');
 let path = require('path');
@@ -38,6 +39,7 @@ app.resource('contents', require('./controllers/content'), { id: 'id' })
 // app.resource('logins', require('./controllers/login'), { id: 'id' })
 app.use('/login', login)
 // app.use('/logout', logout)
+app.use('/controlplace', controlplace)
 
 // これだとpublic / privateのだしわけができない
 //app.use(express.static('public'));
