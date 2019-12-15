@@ -28,7 +28,7 @@ var app = new Vue({
             self.qrcreation(j)
           })
         }).then((k) => {
-          this.readall();
+          self.readall();
         })
         ;
       ;
@@ -36,13 +36,15 @@ var app = new Vue({
     },
 
     qrcreation: function (i) {
+      alert("QR発行するよ")
       let idqr = i.id;
-      $('#qrprint').html("");
-      var d = {
-        dorl: "d",
-        id: idqr
+      console.log(idqr);
+      const textqr = {
+        dorp:"p",
+        id:i.id
       }
-      $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(d)})
+      $('#qrprint').html("");
+      $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(textqr)})
     },
 
     readall: function () {
@@ -55,7 +57,7 @@ var app = new Vue({
         method: "GET"
       };
       var self = this;
-      fetch('/controlplace', d)
+      fetch('/places', d)
         .then((e) => {
           e.json().then((j) => {
             self.places = j;

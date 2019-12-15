@@ -1,6 +1,6 @@
 let express = require('express')
 let Res = require('express-resource')
-// let cp = require('cookie-parser')
+let cookieParser = require('cookie-parser')
 let session = require('express-session')
 // let path = require('path')
 let login = require('./routes/login')
@@ -26,8 +26,7 @@ app.use(session({
     maxAge: 10 * 60 * 1000
   }
 }));
-
-// app.use(cp())
+app.use(cookieParser())
 
 //resourceの場合必ず”s"を入れること。あくまでもAPI/通信内部の世界だからsを気にすることはない。
 app.resource('storeditemlists', require('./controllers/storeditemlist'), { id: 'id' })

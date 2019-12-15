@@ -2,7 +2,7 @@ var app = new Vue({
   el: "#app",
   data: {
     newcontent: "",
-    contents: ""
+    allcontents: ""
   },
 
   methods: {
@@ -36,13 +36,20 @@ var app = new Vue({
     },
 
     qrcreation: function (i) {
+      alert("Document QR発行するよ")
       let idqr = i.id;
       console.log(idqr);
+      const textqr = {
+        dorp:"d",
+        id:i.id
+      }
       $('#qrprint').html("");
-      $('#qrprint').qrcode({ width: 90, height: 90, text: '{"dorl":"d","id":idqr}' })
+      $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(textqr)})
     },
 
+
     readall: function () {
+      alert("HHH")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -52,15 +59,12 @@ var app = new Vue({
         method: "GET"
       };
       var self = this;
-      fetch('/controlcontent', d)
+      fetch('/contents', d)
         .then((e) => {
           e.json().then((j) => {
-            self.places = j;
+            self.allcontents = j;
           })
         })
     },
-
-
-
   }
 })

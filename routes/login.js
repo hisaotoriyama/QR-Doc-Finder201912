@@ -21,14 +21,14 @@ router.post('/',(req, res) => {
             console.log(req.session.password)
             console.log(req.session.user_id)
 
-        // res.cookie('login',true)
-        // res.cookie('name',req.body.loginName)
+        res.cookie('login',true,{maxAge:600000, httpOnly:false})
+        res.cookie('name',req.body.loginName,{maxAge:600000, httpOnly:false})
         // →以下加筆
-        // res.cookie('id', d.id)
+        res.cookie('user_id', d.id,{maxAge:600000, httpOnly:false})
         res.send(200)
     } else {
-        // res.cookie('login',false)
-        res.send(400)    
+        res.cookie('login',false)
+        res.send(200)    
     }
     })
 })

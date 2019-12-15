@@ -5,12 +5,18 @@ let db = require('../models/index')
 // REST controller definitions
 module.exports = {
     index: (req, res) => {
-
-
-
-
-
-
+        db.place.findAll(
+            // { include: [db.user]}
+            )            
+        .then((d) => {
+            let data = d.map((p) => {
+                  return {
+                    id: p.id,
+                    storageplace: p.name
+                }
+            })
+            res.json(data)
+    })
     },
     new: (req, res) => {
         res.send("new forum");
@@ -18,15 +24,16 @@ module.exports = {
 
     create: (req, res) => {
         let data = {
-            storageplace: Number(req.body.storageplace)
+            name: req.body.storageplace
         }
         db.place.create(data).then((p) => {
             res.status(200).json({
                 id: p.id,
-                storageplace: p.storageplace
+                storageplace: p.name
             })
         })
 ///        res.send(200)
+        // res.send(200)
     },
 
     show: (req, res) => {
