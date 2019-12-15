@@ -18,8 +18,8 @@ router.post('/',(req, res) => {
         req.session.password= req.body.loginPassword
         req.session.user_id = d.id
             console.log(req.session.name)
-            console.log(req.session.password)
-            console.log(req.session.user_id)
+            // console.log(req.session.password)
+            // console.log(req.session.user_id)
 
         res.cookie('login',true,{maxAge:600000, httpOnly:false})
         res.cookie('name',req.body.loginName,{maxAge:600000, httpOnly:false})
