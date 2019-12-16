@@ -1,3 +1,5 @@
+
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -27,9 +29,10 @@ var app = new Vue({
         },
         dataexport:function(){
             alert("list変更するよ")
+            console.log( Cookies.get('user_id'))
             const data = {
-                    "latestuser": req.cookie.user_id,
-                    "storageplace": storageplace,
+                    "latestuser": Cookies.get('user_id'),
+                    "storageplace": this.storageplace,
 
                 };
                 const headers = {

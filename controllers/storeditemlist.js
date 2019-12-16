@@ -7,8 +7,7 @@ module.exports = {
     index: (req, res) => {
         db.storeditemlist.findAll(
             // { include: [db.user]}
-        )
-            .then((d) => {
+        ).then((d) => {
                 let data = d.map((p) => {
                     return {
                         id: p.id,
