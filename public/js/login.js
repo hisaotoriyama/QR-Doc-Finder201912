@@ -1,3 +1,4 @@
+
 var app = new Vue({
   el: "#app",
   data: {
@@ -22,14 +23,14 @@ var app = new Vue({
         body: JSON.stringify(data)
       };
       //ok
-      fetch('../login', d)
-        .then((e) => {
-          console.log(e)
+      fetch('../login', d).then((e) => {
+          e.json().then((j) =>{
+          console.log(JSON.parse(j));
+          this.cookies(JSON.parse(j));
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/qrreader.html"
-        })
-
+        })})
     },
 
     loginandqrforcontent: function () {
@@ -48,13 +49,15 @@ var app = new Vue({
         body: JSON.stringify(data)
       };
       //ok
-      fetch('../login', d)
-        .then((e) => {
-          console.log(e)
+      fetch('../login', d).then((e) => {
+        e.json().then((j) =>{    
+          console.log(JSON.parse(j));
+          this.cookies(JSON.parse(j));
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/qrcreaterforcontent.html"
         })
+      })
 
     },
       loginandqrforplace: function () {
@@ -73,13 +76,15 @@ var app = new Vue({
         body: JSON.stringify(data)
       };
       //ok
-      fetch('../login', d)
-        .then((e) => {
-          console.log(e)
+      fetch('../login', d).then((e) => {
+        e.json().then((j) =>{
+          console.log(JSON.parse(j));
+          this.cookies(JSON.parse(j));
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/qrcreaterforplace.html"
         })
+      })
 
     },
     loginstoreditemlist: function () {
@@ -98,17 +103,25 @@ var app = new Vue({
       body: JSON.stringify(data)
     };
     //ok
-    fetch('../login', d)
-      .then((e) => {
-        console.log(e)
+    fetch('../login', d).then((e) => {
+      e.json().then((j) =>{
+        console.log(JSON.parse(j));
+        this.cookies(JSON.parse(j));
         //その上で、location.href処理しsecureに移る。
         //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
         location.href = "/private/storeditemlist.html"
       })
+    })
+  },
 
+  cookies: function (d) {
+    if(this.loginPassword==d.password){
+      Cookies.set('login',true,{expires:0.5})
+      Cookies.set('name',this.loginName,{expires:0.5})
+      Cookies.set('user_id', d.id,{expires:0.5})
+  } else {
+      Cookies.set('login',false,{expires:0.5})
   }
-
-  
-
+  }
   }
 });

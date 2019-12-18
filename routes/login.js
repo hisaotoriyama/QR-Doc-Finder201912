@@ -20,12 +20,12 @@ router.post('/',(req, res) => {
             console.log(req.session.name)
             // console.log(req.session.password)
             // console.log(req.session.user_id)
-        Cookies.set('login',true,{expires:0.5})
-        Cookies.set('name',req.body.loginName,{expires:0.5})
-        Cookies.set('user_id', d.id,{expires:0.5})
+        // Cookies.set('login',true,{expires:0.5})
+        // Cookies.set('name',req.body.loginName,{expires:0.5})
+        // Cookies.set('user_id', d.id,{expires:0.5})
         res.send(200)
     } else {
-        Cookies.set('login',false)
+        // Cookies.set('login',false)
         res.send(200)    
     }
     })

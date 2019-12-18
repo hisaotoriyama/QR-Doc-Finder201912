@@ -9,7 +9,6 @@ let controlplace = require('./routes/controlplace')
 let bodyParser = require('body-parser');
 let path = require('path');
 
-
 // 重要
 let app = express()
 
