@@ -25,12 +25,15 @@
           <td><input type="text" class="form-control" v-model="newcontent"></td>
         </tr>
         <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">ReadAll</button></td></tr>
-      
         <tr v-for="eachcontent in allcontents">
-                <th></th>
-                <th>{{eachcontent.id}}</th>
-                <th>{{eachcontent.content}}</th>
-        </tr>
+            <th></th>
+            <th>{{eachcontent.id}}</th>
+            <th>{{eachcontent.content}}</th>
+    </tr>
+        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetostoreditemlist">To Stored Item List</button></td></tr>
+        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
+      
+        
     </table>
 
 

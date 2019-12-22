@@ -23,7 +23,8 @@ router.post('/',(req, res) => {
         // Cookies.set('login',true,{expires:0.5})
         // Cookies.set('name',req.body.loginName,{expires:0.5})
         // Cookies.set('user_id', d.id,{expires:0.5})
-        res.send(200)
+        res.json({id:d.id,name:req.body.loginName,password:d.password})
+//        res.send(200)
     } else {
         // Cookies.set('login',false)
         res.send(200)    

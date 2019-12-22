@@ -25,10 +25,10 @@ app.use(session({
     maxAge: 10 * 60 * 1000
   }
 }));
-app.use(cookieParser())
+// app.use(cookieParser())
 
 //resourceの場合必ず”s"を入れること。あくまでもAPI/通信内部の世界だからsを気にすることはない。
-app.resource('storeditemlists', require('./controllers/storeditemlist'), { id: 'id' })
+app.resource('storeditems', require('./controllers/storeditem'), { id: 'id' })
 app.resource('users', require('./controllers/user'), { id: 'id' })
 app.resource('places', require('./controllers/place'), { id: 'id' })
 app.resource('contents', require('./controllers/content'), { id: 'id' })

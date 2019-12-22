@@ -3,28 +3,28 @@ Vue.component("silist", {
     template: "<tr><input type=\"checkbox\" id=\"checkbox\" v-model=\"storage.check\"><td>{{slistId}}</td><td>{{documentId}}</td><td>{{documentName}}</td><td>{{storageplaceId}}</td><td>{{storageplaceName}}</td><td>{{originaluserId}}</td><td>{{originaluserName}}</td><td>{{latestuserId}}</td><td>{{latestuserName}}</td></tr>",
     computed: {
         slistId: function () {
-            return this.storage.slistId;
+            return this.storage.id;
         },
         documentId: function () {
-            return this.storage.documentId;
+            return this.storage.document;
         },
         documentName: function () {
             return this.storage.documentName;
         },
         storageplaceId: function () {
-            return this.storage.storageplaceId;
+            return this.storage.storageplace;
         },
         storageplaceName: function () {
             return this.storage.storageplaceName;
         },
         originaluserId: function () {
-            return this.storage.originaluserId;
+            return this.storage.originaluser;
         },
         originaluserName: function () {
             return this.storage.originaluserName;
         },
         latestuserId: function () {
-            return this.storage.latestuserId;
+            return this.storage.latestuser;
         },
         latestuserName: function () {
             return this.storage.latestuserName;
@@ -109,7 +109,6 @@ var app = new Vue({
 
 
         readall: function () {
-            alert("koko")
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -119,14 +118,21 @@ var app = new Vue({
                 method: "GET"
             };
             var self = this;
-            fetch('/storeditemlists', d)
+            fetch('/storeditems', d)
                 .then((e) => {
                     console.log(e)
                     e.json().then((j) => {
+                        console.log(j)
                         self.storeditemlists = j;
                     })
                 })
         },
+        movetoqrcreaterforplace:function(){
+            location.href = "./qrcreaterforplace.html"
+          },
+        movetoqrcreaterforcontent:function(){
+            location.href = "./qrcreaterforcontent.html"
+          }
     
 
 

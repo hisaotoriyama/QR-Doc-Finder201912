@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Stored Item List</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -46,20 +47,24 @@
                     <th>Name</th>
                     <th>Id</th>
                     <th>Name</th>
-
+                    <tr><td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button>
+                        <td></tr>  
                     <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr>
                     <tr is=silist v-for="list in storeditemlists" v-bind:storage="list"></tr>
 
 
                 </tbody>
 
-
+                <tr><td><button type="button" class="btn btn-outline-primary" v-on:click="updatelist">Update</button>
+                </td></tr>
+    
+                <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
+                <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforcontent">To Content</button></td></tr>
+          
             </table>
-            <td><button type="button" class="btn btn-outline-primary ml-5 mt-5 " v-on:click="updatelist">Update</button>
-            </td>
 
-            <td><button type="button" class="btn btn-outline-primary ml-5 mt-5 " v-on:click="readall">Read All</button>
-            <td>
+
+      
 
 
         </div>

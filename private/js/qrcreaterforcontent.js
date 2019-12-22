@@ -66,5 +66,13 @@ var app = new Vue({
           })
         })
     },
+
+    movetostoreditemlist:function(){
+      location.href = "./storeditemlist.html"
+    },
+    movetoqrcreaterforplace:function(){
+      location.href = "./qrcreaterforplace.html"
+    }
+
   }
 })

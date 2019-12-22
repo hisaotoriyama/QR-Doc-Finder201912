@@ -36,6 +36,7 @@
         <button type="button" v-on:click="dataexport">Re-Storage</button>
       </table>
       <pre>{{globalData.QRdata}}</pre>
+      <pre>{{qrdata}}</pre>
 
       <pre>
           {{$data.document_id}}
@@ -105,9 +106,13 @@
         drawLine(ctx, code.location);       // 見つかった箇所に線を引く
 
         // video と canvas を入れ替え
-        canvas.style.display = 'block';
-        video.style.display = 'none';
-        video.pause();
+        //canvas.style.display = 'block';
+        //video.style.display = 'none';
+        //video.pause();
+        console.log(code)
+        setTimeout(() => {
+          checkPicture();
+        }, 300);
       }
       //----------------------
       // 存在しない場合

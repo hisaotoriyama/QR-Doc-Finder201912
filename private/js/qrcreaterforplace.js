@@ -64,6 +64,12 @@ var app = new Vue({
           })
         })
     },
+    movetostoreditemlist:function(){
+      location.href = "./storeditemlist.html"
+    },
+    movetoqrcreaterforcontent:function(){
+      location.href = "./qrcreaterforcontent.html"
+    }
 
 
 

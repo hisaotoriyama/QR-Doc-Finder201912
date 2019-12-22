@@ -5,14 +5,14 @@ let db = require('../models/index')
 // REST controller definitions
 module.exports = {
     index: (req, res) => {
-        db.storeditemlist.findAll(
-            // { include: [db.user]}
+        db.storeditem.findAll(
+            // { include: [db.storeditem]}
         ).then((d) => {
                 let data = d.map((p) => {
                     return {
                         id: p.id,
                         document: p.document,
-                        storageplace: p.storegeplace,
+                        storageplace: p.storageplace,
                         originaluser: p.originaluser,
                         latestuser: p.latestuser
                     }
@@ -29,7 +29,7 @@ module.exports = {
         let data = {
             storageplace: Number(req.body.storageplace)
         }
-        db.place.create(data).then((p) => {
+        db.storeditem.create(data).then((p) => {
             res.json({
                 id: p.id,
                 storageplace: p.storageplace
@@ -46,7 +46,7 @@ module.exports = {
     },
 
     update: (req, res) => {
-        db.storeditemlist.update({
+        db.storeditem.update({
             storageplace:req.body.storageplace,
             latestuser:req.body.latestuser
         },{

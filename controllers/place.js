@@ -6,7 +6,7 @@ let db = require('../models/index')
 module.exports = {
     index: (req, res) => {
         db.place.findAll(
-            // { include: [db.user]}
+            // { include: [db.place]}
             )            
         .then((d) => {
             let data = d.map((p) => {
