@@ -5,19 +5,24 @@ let db = require('../models/index')
 // REST controller definitions
 module.exports = {
     index: (req, res) => {
-        db.storeditem.findAll(
-            // { include: [db.storeditem]}
-        ).then((d) => {
+        db.storeditem.findAll({
+            // include: [{
+            //     model: db.user
+            // }]
+        }).then((d) => {
+            console.log(d)
                 let data = d.map((p) => {
                     return {
                         id: p.id,
                         document: p.document,
                         storageplace: p.storageplace,
                         originaluser: p.originaluser,
+                        // originaluserName: p.originaluser,
                         latestuser: p.latestuser
+                        // latestuserName: p.latestuser
                     }
                 })
-                res.json(data)
+                // res.json(data)
             })
     },
 

@@ -10,12 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     user.hasMany(models.storeditem, {
-      foreignKey: 'latestuser',
-      as: 'lu',
-    })
-    user.hasMany(models.storeditem, {
-      foreignKey: 'originaluser',
-      as: 'ou',
+      foreignKey: "id"
     })
   };
   return user;

@@ -32,6 +32,7 @@ Vue.component("silist", {
     }
 })
 
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -120,7 +121,7 @@ var app = new Vue({
             var self = this;
             fetch('/storeditems', d)
                 .then((e) => {
-                    console.log(e)
+                    // console.log(e)
                     e.json().then((j) => {
                         console.log(j)
                         self.storeditemlists = j;

@@ -11,22 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   storeditem.associate = function(models) {
     // associations can be defined here
 
-    storeditem.belongsTo(models.content, {
-      foreignKey: 'document',
-      onDelete:'CASCADE',
-    })
-    storeditem.belongsTo(models.place, {
-      foreignKey: 'storageplace',
-      onDelete:'CASCADE',
-    })
-    storeditem.belongsTo(models.user,{
-      foreignKey:'latestuser',
-      onDelete:'CASCADE',
-    })
-    storeditem.belongsTo(models.user,{
-      foreignKey:'originaluser',
-      onDelete:'CASCADE',
-    })
+    storeditem.belongsTo(models.content)
+    storeditem.belongsTo(models.place)
+    storeditem.belongsTo(models.user)
   };
   return storeditem;
 };

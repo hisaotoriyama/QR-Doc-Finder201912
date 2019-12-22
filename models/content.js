@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   content.associate = function(models) {
     // associations can be defined here
     content.hasMany(models.storeditem, {
-      foreignKey: 'document',
-      as: 'doc',
+      foreignKey: 'id'
     })
   };
   return content;
