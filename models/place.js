@@ -7,9 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   place.associate = function(models) {
     // associations can be defined here
-    place.hasMany(models.storeditem, {
-      foreignKey: 'id'
-    })
+    place.hasMany(models.storeditem)
   };
   return place;
 };

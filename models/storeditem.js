@@ -11,9 +11,10 @@ module.exports = (sequelize, DataTypes) => {
   storeditem.associate = function(models) {
     // associations can be defined here
 
-    storeditem.belongsTo(models.content)
-    storeditem.belongsTo(models.place)
-    storeditem.belongsTo(models.user)
+    storeditem.belongsTo(models.content,{foeignKey:"document",targetKey:"id"})
+    storeditem.belongsTo(models.place,{foeignKey:"storageplace",targetKey:"id"})
+    storeditem.belongsTo(models.user,{foeignKey:"originaluser",targetKey:"id"})
+    storeditem.belongsTo(models.user,{foeignKey:"latestuser",targetKey:"id"})
   };
   return storeditem;
 };
