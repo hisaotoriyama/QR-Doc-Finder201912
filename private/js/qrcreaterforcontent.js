@@ -33,6 +33,7 @@ var app = new Vue({
         ;
       ;
       this.newcontent = ""
+      location.href = "./printQR.html"
     },
 
     qrcreation: function (i) {
