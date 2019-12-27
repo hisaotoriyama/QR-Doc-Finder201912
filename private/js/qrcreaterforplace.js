@@ -24,8 +24,7 @@ var app = new Vue({
       fetch('/places', d)
         .then((e) => {
           e.json().then((j) => {
-            console.log(j);
-            self.qrcreation(j)
+            location.href = "./printQR.html?dorp=p&id="+j.id
           })
         }).then((k) => {
           self.readall();
@@ -33,18 +32,6 @@ var app = new Vue({
         ;
       ;
       this.newstorageplace = ""
-    },
-
-    qrcreation: function (i) {
-      alert("QR発行するよ")
-      let idqr = i.id;
-      console.log(idqr);
-      const textqr = {
-        dorp:"p",
-        id:i.id
-      }
-      $('#qrprint').html("");
-      $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(textqr)})
     },
 
     readall: function () {

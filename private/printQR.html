@@ -24,7 +24,9 @@
 <body>
   <div id="app">
     <div class="row">
-      <table class="table table table-striped ml-5 mt-5">素晴らしい
+      <table class="table table table-striped ml-5 mt-5">
+          <td><button type="button" class="btn btn-outline-primary" v-on:click="qrcreation">QR Creation</button>
+          </td>
       </table>
 
 
@@ -33,11 +35,12 @@
 
     <div class="row">
       <div id="qrprint" class="ml-5 mt-5"></div>
+     
     </div>
-
+    <pre>{{$data.textqr}}</pre>
   </div>
 
-  <script src="./js/qrcreaterforplace.js"></script>
+  <script src="./js/printQR.js"></script>
 
 
 </body>

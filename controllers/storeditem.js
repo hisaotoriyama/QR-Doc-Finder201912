@@ -6,11 +6,18 @@ let db = require('../models/index')
 module.exports = {
     index: (req, res) => {
         db.storeditem.findAll({
-            // include: [{
-            //     model: db.user
-            // }]
+            include: [{
+                model: db.user
+            },
+            {
+                model: db.place
+            },
+            {
+                model: db.content
+            }
+        ]
         }).then((d) => {
-            console.log(d)
+            console.log(JSON.stringify(d))
                 let data = d.map((p) => {
                     return {
                         id: p.id,
