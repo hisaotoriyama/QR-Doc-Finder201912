@@ -32,6 +32,7 @@ app.resource('storeditems', require('./controllers/storeditem'), { id: 'id' })
 app.resource('users', require('./controllers/user'), { id: 'id' })
 app.resource('places', require('./controllers/place'), { id: 'id' })
 app.resource('contents', require('./controllers/content'), { id: 'id' })
+app.resource('contentgroups', require('./controllers/contentgroup'), { id: 'id' })
 
 //loginはresouce使ったCRUD不要。したがってroutesできる。
 // app.resource('logins', require('./controllers/login'), { id: 'id' })

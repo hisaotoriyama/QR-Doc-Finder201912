@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return [
+    return Promise.all([
       queryInterface.addColumn('contents', 'group', {
         type: Sequelize.INTEGER,
         after: 'id',
@@ -19,13 +19,13 @@ module.exports = {
           key: 'id'
         }
       })
-    ];
+    ]);
   },
 
   down: function (queryInterface, Sequelize) {
-    return [
+    return Promise.all([
       queryInterface.removeColumn('contents', 'group'),
       queryInterface.removeColumn('contents', 'storeditemid')
-    ];
+    ]);
   }
 };

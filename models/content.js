@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     // content.hasMany(models.storeditem)
     //content.hasOne(models.storeditem,{foreignKey:"document"})
+    content.belongsTo(models.contentgroup,{foreignKey:"group"})
   };
   return content;
 };
