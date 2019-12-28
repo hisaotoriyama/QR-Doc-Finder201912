@@ -21,15 +21,17 @@ module.exports = {
                 let data = d.map((p) => {
                     return {
                         id: p.id,
-                        document: p.document,
-                        storageplace: p.storageplace,
+                        document: p.content.id,
+                        documentName:p.content.name,
+                        storageplace: p.place.id,
+                        storageplaceName:p.place.name,
                         originaluser: p.originaluser,
-                        // originaluserName: p.originaluser,
-                        latestuser: p.latestuser
-                        // latestuserName: p.latestuser
+                        originaluserName: null,
+                        latestuser: p.user.id,
+                        latestuserName: p.user.name
                     }
                 })
-                // res.json(data)
+                res.json(data)
             })
     },
 

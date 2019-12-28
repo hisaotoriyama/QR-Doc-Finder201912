@@ -29,6 +29,8 @@ Vue.component("silist", {
         latestuserName: function () {
             return this.storage.latestuserName;
         }
+
+        
     }
 })
 
@@ -37,41 +39,41 @@ var app = new Vue({
     el: "#app",
     data: {
         selectedstoreditemlists:"",
-        storeditemlists: ""
-        // [{
-        //     "slistId": 1,
-        //     "documentId": 1,
-        //     "documentName": "Delivery Docs",
-        //     "storageplaceId": 1,
-        //     "storageplaceName": "A-1",
-        //     "originaluserId": 17,
-        //     "originaluserName": "Hisao",
-        //     "latestuserId": 19,
-        //     "latestuserName": "Yoshiko"
-        // },
-        // {
-        //     "slistId": 2,
-        //     "documentId": 2,
-        //     "documentName": "Shipping Docs",
-        //     "storageplaceId": 2,
-        //     "storageplaceName": "A-2",
-        //     "originaluserId": 18,
-        //     "originaluserName": "Seitaro",
-        //     "latestuserId": 17,
-        //     "latestuserName": "Hisao"
-        // },
-        // {
-        //     "slistId": 3,
-        //     "documentId": 3,
-        //     "documentName": "Sales Contract",
-        //     "storageplaceId": 3,
-        //     "storageplaceName": "B-1",
-        //     "originaluserId": 19,
-        //     "originaluserName": "Yoshiko",
-        //     "latestuserId": 18,
-        //     "latestuserName": "Seitaro"
-        // }
-        // ]
+        storeditemlists: 
+        [{
+            "slistId": 1,
+            "documentId": 1,
+            "documentName": "Delivery Docs",
+            "storageplaceId": 1,
+            "storageplaceName": "A-1",
+            "originaluserId": 17,
+            "originaluserName": "Hisao",
+            "latestuserId": 19,
+            "latestuserName": "Yoshiko"
+        },
+        {
+            "slistId": 2,
+            "documentId": 2,
+            "documentName": "Shipping Docs",
+            "storageplaceId": 2,
+            "storageplaceName": "A-2",
+            "originaluserId": 18,
+            "originaluserName": "Seitaro",
+            "latestuserId": 17,
+            "latestuserName": "Hisao"
+        },
+        {
+            "slistId": 3,
+            "documentId": 3,
+            "documentName": "Sales Contract",
+            "storageplaceId": 3,
+            "storageplaceName": "B-1",
+            "originaluserId": 19,
+            "originaluserName": "Yoshiko",
+            "latestuserId": 18,
+            "latestuserName": "Seitaro"
+        }
+        ]
     },
 
     methods: {
@@ -121,9 +123,7 @@ var app = new Vue({
             var self = this;
             fetch('/storeditems', d)
                 .then((e) => {
-                    // console.log(e)
                     e.json().then((j) => {
-                        console.log(j)
                         self.storeditemlists = j;
                     })
                 })

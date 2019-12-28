@@ -1,20 +1,24 @@
 var app = new Vue({
     el: "#app",
     data: {
-        textqr:"",
+        textqr:null,
     },
-  
+    computed: {
+        qrtxt: function() {
+            return JSON.stringify(this.textqr)
+        }
+    },
     methods: {  
       qrcreation: function (i) {
         alert("Document QR発行するよ")
         let dorpqr = this.getParam('dorp')
         let idqr = this.getParam('id')
-        const textqr = {
+        this.textqr = {
           dorp:dorpqr,
           id:idqr
         }
         $('#qrprint').html("");
-        $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(textqr)})
+        $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(this.textqr)})
       },
 
       getParam: function (name, url) {
