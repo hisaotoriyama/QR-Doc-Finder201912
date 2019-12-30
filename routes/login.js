@@ -11,8 +11,6 @@ router.post('/',(req, res) => {
         }
     }).then((d)=> {
         // passwordがなぜだか登録されていない！→modelsの修正もれがあった。修正したら
-        console.log(d.password)
-        console.log(d.id)
     if(req.body.loginPassword==d.password){
         req.session.name=req.body.loginName
         req.session.password= req.body.loginPassword

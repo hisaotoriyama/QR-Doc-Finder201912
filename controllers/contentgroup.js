@@ -16,6 +16,8 @@ module.exports = {
                 }
             })
             res.json(data)
+            // console.log(data)
+                    //ok
     })
     },
     new: (req, res) => {
@@ -23,14 +25,14 @@ module.exports = {
     },
 
     create: (req, res) => {
-        console.log(req.body.content)
+        console.log(req.body.contentgroup)
         let data = {
-            name: req.body.content
+            name: req.body.contentgroup
         }
-        db.content.create(data).then((p) => {
+        db.contentgroup.create(data).then((p) => {
             res.json({
                 id: p.id,
-                content: p.name
+                contentgroup: p.name
             })
         })
         // res.send(200)

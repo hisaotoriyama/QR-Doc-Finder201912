@@ -30,21 +30,27 @@
     </tr>
         <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetostoreditemlist">To Stored Item List</button></td></tr>
         <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
-      
+        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforcontent">To Content</button></td></tr>
+        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoadminuser">To User(Admin)</button></td></tr>
+ 
         
     </table>
 
-
+    <pre>{{$data.allcontentgroups}}</pre>
 
     </div>
 
     <div class="row">
       <div id="qrprint" class="ml-5 mt-5"></div>
     </div>
+    
 
   </div>
 
-  <script src="./js/qrcreaterforcontent.js"></script>
+  
+
+
+  <script src="./js/admincontentgroup.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

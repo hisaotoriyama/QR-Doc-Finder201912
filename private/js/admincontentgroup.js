@@ -2,14 +2,14 @@ var app = new Vue({
     el: "#app",
     data: {
       newcontentgroup: "",
-      allcontentgroups: ""
+      allcontentgroups:""
     },
   
     methods: {
       addcontentgroup: function () {
         // if (this.newName == "") return;
         const data = {
-          "content": this.newcontentgroup
+          "contentgroup": this.newcontentgroup
         };
         const headers = {
           'Accept': 'application/json',
@@ -45,20 +45,30 @@ var app = new Vue({
           method: "GET"
         };
         var self = this;
-        fetch('/contentgroups', d)
-          .then((e) => {
+        fetch('/contentgroups', d).then((e) => {
             e.json().then((j) => {
+                console.log(j)
               self.allcontentgroups = j;
             })
           })
       },
   
-    //   movetostoreditemlist:function(){
-    //     location.href = "./storeditemlist.html"
-    //   },
-    //   movetoqrcreaterforplace:function(){
-    //     location.href = "./qrcreaterforplace.html"
-    //   }
+      movetostoreditemlist:function(){
+        location.href = "./storeditemlist.html"
+      },
+      movetoqrcreaterforplace:function(){
+        location.href = "./qrcreaterforplace.html"
+      },
+    
+      movetoqrcreaterforcontent:function(){
+        location.href = "./qrcreaterforcontent.html"
+      },
+      
+      movetoadminuser:function(){
+        location.href = "./adminuser.html"
+      },
+  
+
   
     }
   })

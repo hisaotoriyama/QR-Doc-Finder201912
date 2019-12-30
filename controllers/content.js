@@ -5,14 +5,22 @@ let db = require('../models/index')
 // REST controller definitions
 module.exports = {
     index: (req, res) => {
-        db.content.findAll(
-            // { include: [db.user]}
-            )            
+        db.content.findAll({
+            include: [{
+                model: db.contentgroup
+            },
+            {
+                model: db.storeditem
+            }]
+            })            
         .then((d) => {
             let data = d.map((p) => {
                   return {
                     id: p.id,
-                    content: p.name
+                    groupid:p.contentgroup.id,
+                    groupName:p.contentgroup.name,
+                    content: p.name,
+                    storeditemid: p.storeditem.id
                 }
             })
             res.json(data)
@@ -25,12 +33,16 @@ module.exports = {
     create: (req, res) => {
         console.log(req.body.content)
         let data = {
-            name: req.body.content
+            group:req.body.group,
+            name: req.body.content,
+            storeditemid: req.body.storeditemid
         }
         db.content.create(data).then((p) => {
             res.json({
                 id: p.id,
-                content: p.name
+                group:p.group,
+                content: p.name,
+                storeditemid: p.storeditemid
             })
         })
         // res.send(200)

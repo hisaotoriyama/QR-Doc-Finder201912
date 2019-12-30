@@ -36,7 +36,7 @@ var app = new Vue({
     },
 
     readall: function () {
-      alert("HHH")
+      // alert("HHH")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'

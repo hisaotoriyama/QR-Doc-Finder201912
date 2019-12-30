@@ -80,7 +80,7 @@ var app = new Vue({
       var self = this;
       fetch('/users', d).then((e) => {
         e.json().then((j) => {
-          // console.log(j)
+          console.log(j)
           self.users = j;
         })
       })
