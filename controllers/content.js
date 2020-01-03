@@ -9,18 +9,22 @@ module.exports = {
             include: [{
                 model: db.contentgroup
             },
-            {
-                model: db.storeditem
-            }]
+            // {
+            //     model: db.storeditem
+            // }
+            ]
             })            
         .then((d) => {
             let data = d.map((p) => {
+                // oK
+
+            console.log(JSON.stringify(d))
                   return {
                     id: p.id,
                     groupid:p.contentgroup.id,
                     groupName:p.contentgroup.name,
                     content: p.name,
-                    storeditemid: p.storeditem.id
+                    // storeditemid: p.storeditem.id
                 }
             })
             res.json(data)

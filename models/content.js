@@ -7,8 +7,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   content.associate = function(models) {
     // associations can be defined here
-    // content.hasMany(models.storeditem)
-    
     content.hasOne(models.storeditem,{foreignKey:"storeditemid"})
     content.belongsTo(models.contentgroup,{foreignKey:"group"})
   };

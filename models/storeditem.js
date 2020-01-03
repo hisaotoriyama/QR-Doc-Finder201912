@@ -11,10 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   storeditem.associate = function(models) {
     // associations can be defined here
 
-    storeditem.hasOne(models.content,{foreignKey:"document"})
-    // →本当はhasOne。contentにもコラムを追加し、foreignKey設定
-
-
+    storeditem.hasOne(models.content,{foreignKey:"storeditemid"})
+    // →本当はhasOne。contentにもコラムを追加し、foreignKey設定。foreignKeyはcontentの方。
+    // storeditem.belongsTo(models.content,{foreignKey:"document"})
     storeditem.belongsTo(models.place,{foreignKey:"storageplace"})
     storeditem.belongsTo(models.user,{foreignKey:"originaluser"})
     storeditem.belongsTo(models.user,{foreignKey:"latestuser"})
