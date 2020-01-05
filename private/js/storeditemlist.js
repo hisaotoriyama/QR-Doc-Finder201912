@@ -112,6 +112,7 @@ var app = new Vue({
 
 
         readall: function () {
+            alert("GoodGoodGood")
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -37,14 +37,14 @@ module.exports = {
     create: (req, res) => {
         console.log(req.body.content)
         let data = {
-            group:req.body.group,
+            groupid:req.body.groupid,
             name: req.body.content,
             storeditemid: req.body.storeditemid
         }
         db.content.create(data).then((p) => {
             res.json({
                 id: p.id,
-                group:p.group,
+                groupid:p.groupid,
                 content: p.name,
                 storeditemid: p.storeditemid
             })
