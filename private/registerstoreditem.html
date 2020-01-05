@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registration of Stored Item</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="row">
+            <table class="table table table-striped ml-5 mt-5">
+                <th></th>
+                <th>ID</th>
+                <th>Doc</th>
+                <th></th>
+                <th>Storage</th>
+                <th>Place</th>
+                <th>Original</th>
+                <th>User</th>
+                <th>Latest</th>
+                <th>User</th>
+
+
+                <tbody>
+                    <th></th>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Id</th>
+                    <th>Name</th>
+
+                    <!-- 以下はstoreditemlistでの一覧なので使わない -->
+                    <!-- <tr><td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button>
+                        <td></tr>  
+                    <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr>
+                    <tr is=silist v-for="list in storeditemlists" v-bind:storage="list"></tr> -->
+
+
+                </tbody>
+
+                <tr>
+                        <td><button type="button" class="btn btn-outline-primary" v-on:click="addnewstrage">Add New Strage</button></td>
+                        <td>AutoId</td>
+
+                        <td><input type="text" class="form-control" v-model="newdocid"></td>
+                        <td><input type="text" class="form-control" v-model="newdocname"></td>
+                        <td><input type="text" class="form-control" v-model="newstrgid"></td>
+                        <td><input type="text" class="form-control" v-model="newstrgname"></td>
+                        <td><input type="text" class="form-control" v-model="neworguserid"></td>
+                        <td><input type="text" class="form-control" v-model="neworgusername"></td>
+                        <td><input type="text" class="form-control" v-model="newlatuserid"></td>
+                        <td><input type="text" class="form-control" v-model="newlatusername"></td>
+                    </tr>
+                    
+                <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="updatelist">Update</button>
+                </td></tr>
+    
+                <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
+                <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforcontent">To Content</button></td></tr>
+          
+            </table>
+
+
+      
+
+
+        </div>
+        <pre>{{$data}}</pre>
+
+
+    </div>
+
+    <script src="./js/registerstoreditem.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+</body>
+
+</html>

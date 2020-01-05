@@ -21,9 +21,9 @@ module.exports = {
                 let data = d.map((p) => {
                     return {
                         id: p.id,
-                        document: p.content.id,
+                        document: p.document,
                         documentName:p.content.name,
-                        storageplace: p.place.id,
+                        storageplace: p.storageplace,
                         storageplaceName:p.place.name,
                         originaluser: p.originaluser,
                         originaluserName: null,

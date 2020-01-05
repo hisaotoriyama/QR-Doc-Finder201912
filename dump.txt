@@ -1,0 +1,191 @@
+-- MySQL dump 10.13  Distrib 5.7.22, for osx10.13 (x86_64)
+--
+-- Host: localhost    Database: qr-document-finder_development
+-- ------------------------------------------------------
+-- Server version	5.7.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `SequelizeMeta`
+--
+
+DROP TABLE IF EXISTS `SequelizeMeta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SequelizeMeta` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`name`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SequelizeMeta`
+--
+
+LOCK TABLES `SequelizeMeta` WRITE;
+/*!40000 ALTER TABLE `SequelizeMeta` DISABLE KEYS */;
+INSERT INTO `SequelizeMeta` VALUES ('20191203034202-create-user.js'),('20191203034240-create-place.js'),('20191203034748-create-content.js'),('20191203035445-create-storeditem.js'),('20191227034445-create-contentgroup.js');
+/*!40000 ALTER TABLE `SequelizeMeta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contentgroups`
+--
+
+DROP TABLE IF EXISTS `contentgroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contentgroups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contentgroups`
+--
+
+LOCK TABLES `contentgroups` WRITE;
+/*!40000 ALTER TABLE `contentgroups` DISABLE KEYS */;
+INSERT INTO `contentgroups` VALUES (1,'Contract of Sales','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Contract of Purchase','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Shipping Documents(Import)','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Shipping Documents(Export)','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Licence(Export)','2019-12-28 14:32:29','2019-12-28 14:32:29'),(6,'Licence(Import)','2019-12-29 07:45:12','2019-12-29 07:45:12');
+/*!40000 ALTER TABLE `contentgroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `contents`
+--
+
+DROP TABLE IF EXISTS `contents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `storeditemid` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `contents_group_foreign_idx` (`group`),
+  KEY `contents_storeditemid_foreign_idx` (`storeditemid`),
+  CONSTRAINT `contents_group_foreign_idx` FOREIGN KEY (`group`) REFERENCES `contentgroups` (`id`),
+  CONSTRAINT `contents_storeditemid_foreign_idx` FOREIGN KEY (`storeditemid`) REFERENCES `storeditems` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contents`
+--
+
+LOCK TABLES `contents` WRITE;
+/*!40000 ALTER TABLE `contents` DISABLE KEYS */;
+INSERT INTO `contents` VALUES (1,NULL,'Delivery Docs',NULL,'2019-12-03 10:43:54','2019-12-03 10:43:54'),(2,NULL,'Shipping Docs',NULL,'2019-12-03 10:43:54','2019-12-03 10:43:54'),(3,NULL,'Sales Contract',NULL,'2019-12-03 10:43:54','2019-12-03 10:43:54'),(4,NULL,'Purchase Contract',NULL,'2019-12-03 10:43:54','2019-12-03 10:43:54'),(5,NULL,'',NULL,'2019-12-15 03:31:29','2019-12-15 03:31:29'),(6,NULL,'',NULL,'2019-12-15 03:34:01','2019-12-15 03:34:01'),(7,NULL,'Delivery Docs(Bill of Lading)',NULL,'2019-12-15 03:44:54','2019-12-15 03:44:54'),(8,NULL,'Delivery Docs(Certificate of origin)',NULL,'2019-12-15 06:21:30','2019-12-15 06:21:30'),(9,NULL,'Shipping Docs(Export License)',NULL,'2019-12-15 11:54:19','2019-12-15 11:54:19'),(10,NULL,'Delivery Docs(Trucking Cert)',NULL,'2019-12-15 11:56:20','2019-12-15 11:56:20'),(11,NULL,'Delivery Docs(NKKK)',NULL,'2019-12-15 11:56:47','2019-12-15 11:56:47'),(12,NULL,'Delivery Docs(Customer Receipt)',NULL,'2019-12-24 12:55:37','2019-12-24 12:55:37'),(13,NULL,'Shipping Docs(Export License)',NULL,'2019-12-24 12:57:01','2019-12-24 12:57:01'),(14,NULL,'A',NULL,'2019-12-24 13:46:24','2019-12-24 13:46:24'),(15,NULL,'B',NULL,'2019-12-24 13:47:41','2019-12-24 13:47:41'),(16,NULL,'C',NULL,'2019-12-24 13:51:16','2019-12-24 13:51:16'),(17,NULL,'D',NULL,'2019-12-24 14:15:39','2019-12-24 14:15:39'),(18,NULL,'Q',NULL,'2019-12-24 14:16:53','2019-12-24 14:16:53'),(19,NULL,'E',NULL,'2019-12-25 13:50:43','2019-12-25 13:50:43'),(20,NULL,'F',NULL,'2019-12-27 00:01:24','2019-12-27 00:01:24'),(21,NULL,'G',NULL,'2019-12-27 10:33:00','2019-12-27 10:33:00');
+/*!40000 ALTER TABLE `contents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `places`
+--
+
+DROP TABLE IF EXISTS `places`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `places` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `places`
+--
+
+LOCK TABLES `places` WRITE;
+/*!40000 ALTER TABLE `places` DISABLE KEYS */;
+INSERT INTO `places` VALUES (12,'A-1','2019-12-15 02:45:14','2019-12-15 02:45:14'),(13,'A-2','2019-12-15 02:45:34','2019-12-15 02:45:34'),(14,'A-3','2019-12-15 02:48:57','2019-12-15 02:48:57'),(15,'A-4','2019-12-15 02:49:29','2019-12-15 02:49:29'),(16,'A-4','2019-12-15 02:50:20','2019-12-15 02:50:20'),(17,'A-5','2019-12-15 02:51:26','2019-12-15 02:51:26'),(18,'B-1','2019-12-15 03:54:09','2019-12-15 03:54:09'),(19,'B-2','2019-12-15 06:22:20','2019-12-15 06:22:20'),(20,'A-6','2019-12-15 11:57:32','2019-12-15 11:57:32'),(21,'A-7','2019-12-22 00:06:51','2019-12-22 00:06:51'),(22,'A-8','2019-12-25 13:58:36','2019-12-25 13:58:36'),(23,'A-9','2019-12-27 00:04:46','2019-12-27 00:04:46'),(24,'B-3','2019-12-27 15:40:04','2019-12-27 15:40:04'),(25,'B-4','2019-12-31 01:41:37','2019-12-31 01:41:37');
+/*!40000 ALTER TABLE `places` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `storeditems`
+--
+
+DROP TABLE IF EXISTS `storeditems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `storeditems` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document` int(11) DEFAULT NULL,
+  `storageplace` int(11) DEFAULT NULL,
+  `originaluser` int(11) DEFAULT NULL,
+  `latestuser` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `storeditems`
+--
+
+LOCK TABLES `storeditems` WRITE;
+/*!40000 ALTER TABLE `storeditems` DISABLE KEYS */;
+INSERT INTO `storeditems` VALUES (1,1,12,38,36,'2019-12-03 10:45:49','2019-12-21 09:37:46'),(2,2,15,36,35,'2019-12-03 10:45:49','2019-12-03 10:45:49'),(3,3,21,34,38,'2019-12-03 10:45:49','2019-12-03 10:45:49'),(4,4,20,35,34,'2019-12-03 10:45:49','2019-12-21 07:35:00');
+/*!40000 ALTER TABLE `storeditems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Hisao','hisao','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Yoshiko','yoshiko','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Seitaro','seitaro','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Yuki','yuki','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'Masayuki','masayuki','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'Yoshihiro','yoshihiro','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'Shizuko','shizuko','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'Chiharu','chiharu','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'Takahiro','takahiro','0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,'Hisao','hisao','2019-12-11 13:15:40','2019-12-13 23:29:37'),(35,'Yoshiko','yoshiko','2019-12-11 13:15:51','2019-12-11 13:15:51'),(36,'Seitaro','seitaro','2019-12-11 13:19:30','2019-12-12 02:56:18'),(37,'Yuki','yuki','2019-12-11 13:26:29','2019-12-11 13:26:29'),(38,'Shizuko','shizuko','2019-12-12 02:55:56','2019-12-12 02:55:56');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-01-04  1:55:19

@@ -47,6 +47,7 @@
                     <th>Name</th>
                     <th>Id</th>
                     <th>Name</th>
+
                     <tr><td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button>
                         <td></tr>  
                     <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr>
@@ -55,9 +56,7 @@
 
                 </tbody>
 
-                <tr><td><button type="button" class="btn btn-outline-primary" v-on:click="updatelist">Update</button>
-                </td></tr>
-    
+
                 <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
                 <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforcontent">To Content</button></td></tr>
           
@@ -73,7 +72,7 @@
 
     </div>
 
-    <script src="./js/storeditemlist.js"></script>
+    <script src="./js/registerstoreditem.js"></script>
 
 
 </body>
