@@ -16,14 +16,14 @@ module.exports = {
             })            
         .then((d) => {
             let data = d.map((p) => {
-                // oK
+                //ok
 
             console.log(JSON.stringify(d))
                   return {
                     id: p.id,
-                    groupid:p.contentgroup.id,
+                    groupid:p.groupid,
                     groupName:p.contentgroup.name,
-                    content: p.name,
+                    content: p.name
                     // storeditemid: p.storeditem.id
                 }
             })

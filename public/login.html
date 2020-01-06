@@ -21,20 +21,21 @@
           <th><input type="text" name="password" v-model="loginPassword"></th>
         </tr>
         <tr>
-          <th>Login</th>
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginandqrreader">QR Reader</button></th>
+          <th>Login</th> </tr>
 
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginandqrforcontent">QR Create for Documents</button></th>
 
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginandqrforplace">QR Create for Place</button></th>
-
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginstoreditemlist">Status List</button></th>
-
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginandadminuser">User(Admin)</button></th>
-
-          <th><button type="button" class="btn btn-outline-primary" v-on:click="loginandadmincontentgroup">Content Group(Admin)</button></th>
-        </tr>
       </table>
+
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetouseradmin">User(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR Place(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR Content(C)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemread">StoredItem(R)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoprintqr">printQR</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR Reader</button></td>
+   
     </div>
 
     <div class="row">

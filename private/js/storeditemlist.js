@@ -129,14 +129,32 @@ var app = new Vue({
                     })
                 })
         },
-        movetoqrcreaterforplace:function(){
+        movetouseradmin:function(){
+            location.href = "./adminuser.html"
+          },
+          movetoplaceadmin:function(){
             location.href = "./qrcreaterforplace.html"
           },
-        movetoqrcreaterforcontent:function(){
+          movetocontentsgroupadmin:function(){
+            location.href = "./admincontentgroup.html"
+          },
+          movetoqrcontent:function(){
             location.href = "./qrcreaterforcontent.html"
+          },
+      
+      
+          movetostoreditemread:function(){
+            location.href = "./storeditemlist.html"
+          },
+          movetostoreditemcreate:function(){
+            location.href = "./storeditemlist.html"
+          },
+          movetostoreditemupdate:function(){
+            location.href = "./storeditemlist.html"
+          },
+          movetoprintqr:function(){
+            location.href = "./printQR.html"
           }
-    
-
 
     }
 })

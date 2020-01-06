@@ -14,6 +14,19 @@
 
 <body>
   <div id="app">
+      <div class="row">
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetouseradmin">User(Adm)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR Place(Adm)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR Content(C)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemread">StoredItem(R)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
+          <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoprintqr">printQR</button></td>
+          
+          <!-- <div id="qrprint" class="ml-5 mt-5"></div> -->
+      </div>
+
     <div class="row">
       <table class="table table table-striped ml-5 mt-5">
         <th>Operation</th>
@@ -25,6 +38,8 @@
         <tr>
           <td><button type="button" class="btn btn-outline-primary" v-on:click="addcontent">Add content</button></td>
           <td>Auto Id</td>
+          <td></td>
+          <td></td>
           <td><input type="text" class="form-control" v-model="newcontent"></td>
         </tr>
         <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">ReadAll</button></td></tr>
@@ -36,19 +51,13 @@
             <th>{{eachcontent.content}}</th>
             <th>{{eachcontent.storeditemid}}</th>
     </tr>
-        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetostoreditemlist">To Stored Item List</button></td></tr>
-        <tr> <td><button type="button" class="btn btn-outline-primary" v-on:click="movetoqrcreaterforplace">To Place</button></td></tr>
-      
-        
     </table>
 
 
 
     </div>
 
-    <div class="row">
-      <div id="qrprint" class="ml-5 mt-5"></div>
-    </div>
+
 
   </div>
 
