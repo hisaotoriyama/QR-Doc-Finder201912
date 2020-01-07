@@ -13,9 +13,11 @@ var app = new Vue({
         alert("Document QR発行するよ")
         let dorpqr = this.getParam('dorp')
         let idqr = this.getParam('id')
+        let qrname = this.getParam('name')
         this.textqr = {
           dorp:dorpqr,
-          id:idqr
+          id:idqr,
+          name:qrname
         }
         $('#qrprint').html("");
         $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(this.textqr)})
@@ -31,12 +33,29 @@ var app = new Vue({
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
   
-      movetostoreditemlist:function(){
+    movetouseradmin: function () {
+        location.href = "./adminuser.html"
+    },
+    movetoplaceadmin: function () {
+        location.href = "./adminplace.html"
+    },
+    movetocontentsgroupadmin: function () {
+        location.href = "./admincontentgroup.html"
+    },
+    movetoqrcontent: function () {
+        location.href = "./qrcreaterforcontent.html"
+    },
+    movetostoreditemread: function () {
         location.href = "./storeditemlist.html"
-      },
-      movetoqrcreaterforplace:function(){
-        location.href = "./qrcreaterforplace.html"
-      }
-  
+    },
+    movetostoreditemcreate: function () {
+        location.href = "./storeditemlist.html"
+    },
+    movetostoreditemupdate: function () {
+        location.href = "./storeditemlist.html"
+    },
+    movetoprintqr: function () {
+        location.href = "./printQR.html"
+    }
     }
   })

@@ -12,7 +12,7 @@ module.exports = {
             let data = d.map((p) => {
                   return {
                     id: p.id,
-                    storageplace: p.name
+                    name: p.name
                 }
             })
             res.json(data)
@@ -24,12 +24,12 @@ module.exports = {
 
     create: (req, res) => {
         let data = {
-            name: req.body.storageplace
+            name: req.body.newstorageplace
         }
         db.place.create(data).then((p) => {
             res.status(200).json({
                 id: p.id,
-                storageplace: p.name
+                name: p.name
             })
         })
 ///        res.send(200)
@@ -43,8 +43,18 @@ module.exports = {
         res.send("edit forum " + req.params.forum);
     },
     update: (req, res) => {
-        res.send("update forum " + req.params.forum);
-    },
+        db.place.update({
+            name:req.body.name
+        },{
+          where:{
+            id:req.params.id
+          }
+        }).then((p)=>{
+          let data = p
+          res.json(data)
+        })
+      },
+    
     delete: (req, res) => {
         res.send("destroy forum " + req.params.forum);
     }

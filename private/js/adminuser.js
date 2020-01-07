@@ -80,11 +80,34 @@ var app = new Vue({
       var self = this;
       fetch('/users', d).then((e) => {
         e.json().then((j) => {
-          console.log(j)
           self.users = j;
         })
       })
     },
+    movetouseradmin:function(){
+      location.href = "./adminuser.html"
+    },
+    movetoplaceadmin:function(){
+      location.href = "./adminplace.html"
+    },
+    movetocontentsgroupadmin:function(){
+      location.href = "./admincontentgroup.html"
+    },
+    movetoqrcontent:function(){
+      location.href = "./qrcreaterforcontent.html"
+    },
+    movetostoreditemread:function(){
+      location.href = "./storeditemlist.html"
+    },
+    movetostoreditemcreate:function(){
+      location.href = "./storeditemlist.html"
+    },
+    movetostoreditemupdate:function(){
+      location.href = "./storeditemlist.html"
+    },
+    movetoprintqr:function(){
+      location.href = "./printQR.html"
+    }
 
     // selectdocs: function () {
     //   const headers = {

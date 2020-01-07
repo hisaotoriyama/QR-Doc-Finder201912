@@ -62,7 +62,7 @@ var app = new Vue({
         Cookies.set("user_id",j.id)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "/private/qrcreaterforplace.html"
+          location.href = "/private/adminplace.html"
         })
       })
 

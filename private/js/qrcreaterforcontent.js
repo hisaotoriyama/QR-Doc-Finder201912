@@ -59,7 +59,7 @@ var app = new Vue({
       location.href = "./adminuser.html"
     },
     movetoplaceadmin:function(){
-      location.href = "./qrcreaterforplace.html"
+      location.href = "./adminplace.html"
     },
     movetocontentsgroupadmin:function(){
       location.href = "./admincontentgroup.html"
@@ -67,8 +67,6 @@ var app = new Vue({
     movetoqrcontent:function(){
       location.href = "./qrcreaterforcontent.html"
     },
-
-
     movetostoreditemread:function(){
       location.href = "./storeditemlist.html"
     },

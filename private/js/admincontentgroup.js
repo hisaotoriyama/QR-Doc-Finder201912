@@ -2,14 +2,16 @@ var app = new Vue({
     el: "#app",
     data: {
       newcontentgroup: "",
-      allcontentgroups:""
+      allcontentgroups:"",
+      modifiedname:"",
+      modifiedid:""
     },
   
     methods: {
-      addcontentgroup: function () {
+        contentgroupregister: function () {
         // if (this.newName == "") return;
         const data = {
-          "contentgroup": this.newcontentgroup
+          "newcontentgroup": this.newcontentgroup
         };
         const headers = {
           'Accept': 'application/json',
@@ -52,12 +54,38 @@ var app = new Vue({
             })
           })
       },
+
+      contentgroupmodify: function () {
+        const data = {
+          "name": this.modifiedname
+        };
+
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        };
+        const d = {
+          headers: headers,
+          method: "PUT",
+          body: JSON.stringify(data)
+        };
+        var self = this;
+        return fetch('/contentgroups/' + this.modifiedid, d)
+          .then((e) => {
+            console.log(JSON.stringify(e))
+            e.json().then((j) => {
+              self.readall();
+              self.modifiedname = "";
+              self.modifiedid = ""
+            })
+          })
+      },
   
       movetouseradmin:function(){
         location.href = "./adminuser.html"
       },
       movetoplaceadmin:function(){
-        location.href = "./qrcreaterforplace.html"
+        location.href = "./adminplace.html"
       },
       movetocontentsgroupadmin:function(){
         location.href = "./admincontentgroup.html"
@@ -65,8 +93,6 @@ var app = new Vue({
       movetoqrcontent:function(){
         location.href = "./qrcreaterforcontent.html"
       },
-  
-  
       movetostoreditemread:function(){
         location.href = "./storeditemlist.html"
       },

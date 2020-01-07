@@ -12,7 +12,7 @@ module.exports = {
             let data = d.map((p) => {
                   return {
                     id: p.id,
-                    contentgroup: p.name
+                    name: p.name
                 }
             })
             res.json(data)
@@ -25,14 +25,13 @@ module.exports = {
     },
 
     create: (req, res) => {
-        console.log(req.body.contentgroup)
         let data = {
-            name: req.body.contentgroup
+            name: req.body.newcontentgroup
         }
         db.contentgroup.create(data).then((p) => {
             res.json({
                 id: p.id,
-                contentgroup: p.name
+                name: p.name
             })
         })
         // res.send(200)
@@ -44,9 +43,20 @@ module.exports = {
     edit: (req, res) => {
         res.send("edit forum " + req.params.forum);
     },
-    update: (req, res) => {
-        res.send("update forum " + req.params.forum);
-    },
+    
+update: (req, res) => {
+    db.contentgroup.update({
+        name:req.body.name
+    },{
+      where:{
+        id:req.params.id
+      }
+    }).then((p)=>{
+      let data = p
+      res.json(data)
+    })
+  },
+
     delete: (req, res) => {
         res.send("destroy forum " + req.params.forum);
     }

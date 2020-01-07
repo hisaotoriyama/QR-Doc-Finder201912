@@ -6,10 +6,10 @@ var app = new Vue({
   },
 
   methods: {
-    addplace: function () {
+    placeregister: function () {
       // if (this.newName == "") return;
       const data = {
-        "storageplace": this.newstorageplace
+        "newstorageplace": this.newstorageplace
       };
       const headers = {
         'Accept': 'application/json',
@@ -24,7 +24,7 @@ var app = new Vue({
       fetch('/places', d)
         .then((e) => {
           e.json().then((j) => {
-            location.href = "./printQR.html?dorp=p&id="+j.id
+            location.href = "./printQR.html?dorp=p&id="+j.id+"&name="+j.newstorageplace
           })
         }).then((k) => {
           self.readall();
@@ -51,11 +51,40 @@ var app = new Vue({
           })
         })
     },
+
+
+
+    placemodify: function () {
+      const data = {
+        "name": this.modifiedname
+      };
+
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "PUT",
+        body: JSON.stringify(data)
+      };
+      var self = this;
+      return fetch('/places/' + this.modifiedid, d)
+        .then((e) => {
+          console.log(JSON.stringify(e))
+          e.json().then((j) => {
+            self.readall();
+            self.modifiedname = "";
+            self.modifiedid = ""
+          })
+        })
+    },
+
     movetouseradmin:function(){
       location.href = "./adminuser.html"
     },
     movetoplaceadmin:function(){
-      location.href = "./qrcreaterforplace.html"
+      location.href = "./adminplace.html"
     },
     movetocontentsgroupadmin:function(){
       location.href = "./admincontentgroup.html"
@@ -63,8 +92,6 @@ var app = new Vue({
     movetoqrcontent:function(){
       location.href = "./qrcreaterforcontent.html"
     },
-
-
     movetostoreditemread:function(){
       location.href = "./storeditemlist.html"
     },

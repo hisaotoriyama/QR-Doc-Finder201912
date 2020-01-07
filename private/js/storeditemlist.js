@@ -38,7 +38,7 @@ Vue.component("silist", {
 var app = new Vue({
     el: "#app",
     data: {
-        selectedstoreditemlists:"",
+        selectedstoreditemlists: "",
         storeditemlists: ""
         // [{
         //     "slistId": 1,
@@ -79,11 +79,11 @@ var app = new Vue({
     methods: {
         updatelist: function () {
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
-            var sil = this.storeditemlists.filter((e)=>{
+            var sil = this.storeditemlists.filter((e) => {
                 return e.check == true
             })
             this.selectedstoreditemlists = sil;
-            location.href="../updatestoreditemlist.html"
+            location.href = "../updatestoreditemlist.html"
             //     const data = {
             //     "storageplace": this.selectedstoreditemlist
             // };
@@ -129,32 +129,30 @@ var app = new Vue({
                     })
                 })
         },
-        movetouseradmin:function(){
+        movetouseradmin: function () {
             location.href = "./adminuser.html"
-          },
-          movetoplaceadmin:function(){
-            location.href = "./qrcreaterforplace.html"
-          },
-          movetocontentsgroupadmin:function(){
+        },
+        movetoplaceadmin: function () {
+            location.href = "./adminplace.html"
+        },
+        movetocontentsgroupadmin: function () {
             location.href = "./admincontentgroup.html"
-          },
-          movetoqrcontent:function(){
+        },
+        movetoqrcontent: function () {
             location.href = "./qrcreaterforcontent.html"
-          },
-      
-      
-          movetostoreditemread:function(){
+        },
+        movetostoreditemread: function () {
             location.href = "./storeditemlist.html"
-          },
-          movetostoreditemcreate:function(){
+        },
+        movetostoreditemcreate: function () {
             location.href = "./storeditemlist.html"
-          },
-          movetostoreditemupdate:function(){
+        },
+        movetostoreditemupdate: function () {
             location.href = "./storeditemlist.html"
-          },
-          movetoprintqr:function(){
+        },
+        movetoprintqr: function () {
             location.href = "./printQR.html"
-          }
+        }
 
     }
 })
