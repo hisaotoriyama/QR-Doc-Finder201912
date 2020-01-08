@@ -7,7 +7,13 @@ module.exports = {
     index: (req, res) => {
         db.storeditem.findAll({
             include: [{
-                model: db.user
+                model: db.user,
+                as: "Original"
+
+            },
+            {
+                model: db.user,
+                as: "Latest"
             },
             {
                 model: db.place
@@ -25,10 +31,10 @@ module.exports = {
                         documentName:p.content.name,
                         storageplace: p.storageplace,
                         storageplaceName:p.place.name,
-                        originaluser: p.originaluser,
-                        originaluserName: null,
-                        latestuser: p.user.id,
-                        latestuserName: p.user.name
+                        originaluser: p.Original,
+                        originaluserName: p.Original.name,
+                        latestuser: p.Latest.id,
+                        latestuserName: p.Latest.name
                     }
                 })
                 res.json(data)
