@@ -24,7 +24,9 @@ var app = new Vue({
       fetch('/places', d)
         .then((e) => {
           e.json().then((j) => {
-            location.href = "./printQR.html?dorp=p&id="+j.id+"&name="+j.newstorageplace
+            location.href = "./printQR.html?dorp=p&id="+j.id+"&name="+j.name
+
+            
           })
         }).then((k) => {
           self.readall();

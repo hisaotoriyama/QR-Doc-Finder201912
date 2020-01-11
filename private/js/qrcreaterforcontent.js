@@ -3,14 +3,22 @@ var app = new Vue({
   data: {
     newcontent: "",
     allcontents: "",
-    allcontentgroup:""
+    allcontentgroups: "",
+    eachontentgroup: {
+      id: "",
+      name: ""
+    },
+    newstoreditemid: "",
   },
 
   methods: {
     addcontent: function () {
+      // ok
       // if (this.newName == "") return;
       const data = {
-        "content": this.newcontent
+        "groupid": this.eachcontentgroup.id,
+        "newcontent": this.newcontent,
+        "storeditemid": this.newstoreditemid
       };
       const headers = {
         'Accept': 'application/json',
@@ -21,11 +29,12 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
+      console.log(data)
       var self = this;
       fetch('/contents', d)
         .then((e) => {
           e.json().then((j) => {
-            location.href = "./printQR.html?dorp=d&id="+j.id
+            location.href = "./printQR.html?dorp=d&id=" + j.id + "&name=" + j.name
           })
         }).then((k) => {
           this.readall();
@@ -33,11 +42,10 @@ var app = new Vue({
         ;
       ;
       this.newcontent = ""
-      
+
     },
 
     readall: function () {
-      // alert("HHH")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -55,29 +63,49 @@ var app = new Vue({
         })
     },
 
-    movetouseradmin:function(){
+    movetouseradmin: function () {
       location.href = "./adminuser.html"
     },
-    movetoplaceadmin:function(){
+    movetoplaceadmin: function () {
       location.href = "./adminplace.html"
     },
-    movetocontentsgroupadmin:function(){
+    movetocontentsgroupadmin: function () {
       location.href = "./admincontentgroup.html"
     },
-    movetoqrcontent:function(){
+    movetoqrcontent: function () {
       location.href = "./qrcreaterforcontent.html"
     },
-    movetostoreditemread:function(){
+    movetostoreditemread: function () {
       location.href = "./storeditemlist.html"
     },
-    movetostoreditemcreate:function(){
+    movetostoreditemcreate: function () {
       location.href = "./storeditemlist.html"
     },
-    movetostoreditemupdate:function(){
+    movetostoreditemupdate: function () {
       location.href = "./storeditemlist.html"
     },
-    movetoprintqr:function(){
+    movetoprintqr: function () {
       location.href = "./printQR.html"
     }
-  }
+  },
+
+  created: function () {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    const d = {
+      headers: headers,
+      method: "GET"
+    };
+    var self = this;
+    fetch('/contentgroups', d)
+      .then((e) => {
+        e.json().then((j) => {
+          console.log(j);
+          self.allcontentgroups = j;
+        })
+      })
+  },
+
 })

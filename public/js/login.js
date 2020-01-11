@@ -124,8 +124,8 @@ movetocontentsgroupadmin: function () {
           location.href = "/private/qrcreaterforcontent.html"
         })
       })
-
     },
+
     //5
     movetostoreditemread: function () {
     if (this.loginName == "") return;
@@ -155,6 +155,7 @@ movetocontentsgroupadmin: function () {
       })
     })
   },
+
      //6
      movetostoreditemcreate: function () {
       if (this.loginName == "") return;
@@ -184,6 +185,7 @@ movetocontentsgroupadmin: function () {
         })
       })
     },   
+    
     //7
     movetostoreditemupdate: function () {
     if (this.loginName == "") return;

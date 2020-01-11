@@ -9,11 +9,17 @@ module.exports = {
             include: [{
                 model: db.user,
                 as: "Original"
+<<<<<<< HEAD
 
             },
             {
                 model: db.user,
                 as: "Latest"
+=======
+            },{
+            model: db.user,
+            as: "Latest"
+>>>>>>> 20200110
             },
             {
                 model: db.place
@@ -31,7 +37,11 @@ module.exports = {
                         documentName:p.content.name,
                         storageplace: p.storageplace,
                         storageplaceName:p.place.name,
+<<<<<<< HEAD
                         originaluser: p.Original,
+=======
+                        originaluser: p.Original.id,
+>>>>>>> 20200110
                         originaluserName: p.Original.name,
                         latestuser: p.Latest.id,
                         latestuserName: p.Latest.name

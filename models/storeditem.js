@@ -14,8 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     storeditem.hasOne(models.content,{foreignKey:"id"})
     // storeditem.belongsTo(models.content,{foreignKey:"document"})
     storeditem.belongsTo(models.place,{foreignKey:"storageplace"})
+<<<<<<< HEAD
     storeditem.belongsTo(models.user,{foreignKey:"originaluser", as:"Original"})
     storeditem.belongsTo(models.user,{foreignKey:"latestuser", as:"Latest"})
+=======
+    storeditem.belongsTo(models.user,{foreignKey:"originaluser",as:"Original"})
+    storeditem.belongsTo(models.user,{foreignKey:"latestuser",as:"Latest"})
+>>>>>>> 20200110
   };
   return storeditem;
 };

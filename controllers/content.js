@@ -9,22 +9,18 @@ module.exports = {
             include: [{
                 model: db.contentgroup
             },
-            // {
-            //     model: db.storeditem
-            // }
             ]
             })            
         .then((d) => {
             let data = d.map((p) => {
                 //ok
-
             console.log(JSON.stringify(d))
                   return {
                     id: p.id,
                     groupid:p.groupid,
                     groupName:p.contentgroup.name,
-                    content: p.name
-                    // storeditemid: p.storeditem.id
+                    name: p.name,
+                    storeditemid: p.storeditemid
                 }
             })
             res.json(data)
@@ -35,17 +31,17 @@ module.exports = {
     },
 
     create: (req, res) => {
-        console.log(req.body.content)
+        console.log(req.body.newcontent)
         let data = {
             groupid:req.body.groupid,
-            name: req.body.content,
+            name: req.body.newcontent,
             storeditemid: req.body.storeditemid
         }
         db.content.create(data).then((p) => {
             res.json({
                 id: p.id,
                 groupid:p.groupid,
-                content: p.name,
+                name: p.name,
                 storeditemid: p.storeditemid
             })
         })
