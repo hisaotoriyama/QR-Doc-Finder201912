@@ -6,7 +6,11 @@ let db = require('../models/index')
 module.exports = {
     index: (req, res) => {
         db.storeditem.findAll({
-            include: [{
+            include: [
+            //     {
+            //     model:db.cotentgroup
+            // },
+            {
                 model: db.user,
                 as: "Original"
 
@@ -27,6 +31,8 @@ module.exports = {
                 let data = d.map((p) => {
                     return {
                         id: p.id,
+                        docgroup: p.content.groupid,
+                        docgroupName:p.content.groupid.name,
                         document: p.document,
                         documentName:p.content.name,
                         storageplace: p.storageplace,

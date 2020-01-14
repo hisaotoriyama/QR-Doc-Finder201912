@@ -37,6 +37,7 @@ var app = new Vue({
       })
     })
   },
+  
     // ２
     movetoplaceadmin: function () {
       if (this.loginName == "") return;

@@ -35,17 +35,16 @@ module.exports = {
         let data = {
             groupid:req.body.groupid,
             name: req.body.newcontent,
-            storeditemid: req.body.storeditemid
+            // storeditemid: req.body.storeditemid
         }
         db.content.create(data).then((p) => {
-            res.json({
+            res.status(200).json({
                 id: p.id,
                 groupid:p.groupid,
                 name: p.name,
-                storeditemid: p.storeditemid
+                // storeditemid: p.storeditemid
             })
         })
-        // res.send(200)
     },
 
     show: (req, res) => {

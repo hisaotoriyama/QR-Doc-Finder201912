@@ -13,7 +13,7 @@
     #result { border: 1px solid gray; width:300px; height:200px; padding:10px;}
     small { color:gray; }
   </style>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 
@@ -29,12 +29,19 @@
     <canvas id="picture" width="300" height="200"></canvas>
 
   <div id="app">
+
+    
       <!-- 読み取り結果 from 88行-->
       <input id="result" v-model="globalData.QRdata" />
       <table class="table" class="itemList">
         <button type="button" v-on:click="dataread">QR Read</button>
         <button type="button" v-on:click="dataexport">Re-Storage</button>
       </table>
+
+      
+
+
+
       <pre>{{globalData.QRdata}}</pre>
       <pre>{{qrdata}}</pre>
 

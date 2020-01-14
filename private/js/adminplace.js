@@ -105,7 +105,10 @@ var app = new Vue({
     },
     movetoprintqr:function(){
       location.href = "./printQR.html"
-    }
+    }, 
+    movetoqrreader: function () {
+      location.href = "./qrreader.html"
+  }
 
   }
 })

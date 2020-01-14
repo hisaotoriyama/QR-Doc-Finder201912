@@ -2,6 +2,7 @@ var app = new Vue({
   el: "#app",
   data: {
     newcontent: "",
+    selectedId:"",
     allcontents: "",
     allcontentgroups: "",
     eachontentgroup: {
@@ -16,9 +17,9 @@ var app = new Vue({
       // ok
       // if (this.newName == "") return;
       const data = {
-        "groupid": this.eachcontentgroup.id,
+        "groupid": this.selectedId,
         "newcontent": this.newcontent,
-        "storeditemid": this.newstoreditemid
+        // "storeditemid": this.newstoreditemid
       };
       const headers = {
         'Accept': 'application/json',
@@ -86,7 +87,10 @@ var app = new Vue({
     },
     movetoprintqr: function () {
       location.href = "./printQR.html"
-    }
+    },
+     movetoqrreader: function () {
+      location.href = "./qrreader.html"
+  }
   },
 
   created: function () {

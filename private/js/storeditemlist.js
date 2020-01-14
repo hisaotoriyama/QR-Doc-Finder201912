@@ -1,9 +1,15 @@
 Vue.component("silist", {
     props: ["storage"],
-    template: "<tr><input type=\"checkbox\" id=\"checkbox\" v-model=\"storage.check\"><td>{{slistId}}</td><td>{{documentId}}</td><td>{{documentName}}</td><td>{{storageplaceId}}</td><td>{{storageplaceName}}</td><td>{{originaluserId}}</td><td>{{originaluserName}}</td><td>{{latestuserId}}</td><td>{{latestuserName}}</td></tr>",
+    template: "<tr><input type=\"checkbox\" id=\"checkbox\" v-model=\"storage.check\"><td>{{slistId}}</td><td>{{docgroupId}}</td><td>{{docgroupName}}</td><td>{{documentId}}</td><td>{{documentName}}</td><td>{{storageplaceId}}</td><td>{{storageplaceName}}</td><td>{{originaluserId}}</td><td>{{originaluserName}}</td><td>{{latestuserId}}</td><td>{{latestuserName}}</td></tr>",
     computed: {
         slistId: function () {
             return this.storage.id;
+        },
+        docgroupId: function () {
+            return this.storage.docgroup;
+        },
+        docgroupName: function () {
+            return this.storage.docgroupName;
         },
         documentId: function () {
             return this.storage.document;
@@ -29,8 +35,6 @@ Vue.component("silist", {
         latestuserName: function () {
             return this.storage.latestuserName;
         }
-
-
     }
 })
 
@@ -42,8 +46,10 @@ var app = new Vue({
         storeditemlists: ""
         // [{
         //     "slistId": 1,
+        //     "docgroupId": 1,
+        //     "docgroupName": "Del Docus",
         //     "documentId": 1,
-        //     "documentName": "Delivery Docs",
+        //     "documentName": "PTS",
         //     "storageplaceId": 1,
         //     "storageplaceName": "A-1",
         //     "originaluserId": 17,
@@ -53,8 +59,10 @@ var app = new Vue({
         // },
         // {
         //     "slistId": 2,
+        //     "docgroupId": 1,
+        //     "docgroupName": "Import Docs",
         //     "documentId": 2,
-        //     "documentName": "Shipping Docs",
+        //     "documentName": "Gresik",
         //     "storageplaceId": 2,
         //     "storageplaceName": "A-2",
         //     "originaluserId": 18,
@@ -64,8 +72,10 @@ var app = new Vue({
         // },
         // {
         //     "slistId": 3,
+        //     "docgroupId": 1,
+        //     "docgroupName": "Export Docs",
         //     "documentId": 3,
-        //     "documentName": "Sales Contract",
+        //     "documentName": "Dowa",
         //     "storageplaceId": 3,
         //     "storageplaceName": "B-1",
         //     "originaluserId": 19,
@@ -77,6 +87,38 @@ var app = new Vue({
     },
 
     methods: {
+        storeditemregister: function () {
+            alert("登録するよ")
+            // if (this.newName == "") return;
+            const data = {
+                "newstorageplace": this.newstorageplace
+            };
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "POST",
+                body: JSON.stringify(data)
+            };
+            var self = this;
+            fetch('/places', d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
+
+
+                    })
+                }).then((k) => {
+                    self.readall();
+                })
+                ;
+            ;
+            this.newstorageplace = ""
+        },
+
+
         updatelist: function () {
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
             var sil = this.storeditemlists.filter((e) => {
@@ -110,9 +152,8 @@ var app = new Vue({
             // this.newstorageplace = ""
         },
 
-
         readall: function () {
-            alert("GoodGoodGood")
+            alert("千部読み切るよ（20200114）")
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -129,6 +170,7 @@ var app = new Vue({
                     })
                 })
         },
+
         movetouseradmin: function () {
             location.href = "./adminuser.html"
         },
@@ -152,7 +194,11 @@ var app = new Vue({
         },
         movetoprintqr: function () {
             location.href = "./printQR.html"
+        },
+        movetoqrreader: function () {
+            location.href = "./qrreader.html"
         }
+
 
     }
 })
