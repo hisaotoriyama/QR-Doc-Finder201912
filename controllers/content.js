@@ -54,8 +54,37 @@ module.exports = {
         res.send("edit forum " + req.params.forum);
     },
     update: (req, res) => {
-        res.send("update forum " + req.params.forum);
+        db.content.update({
+            // include: [{
+            //     model: db.contentgroup
+            // },
+            // ]
+            // },
+            // {
+                storeditemid: "storeditemid"
+            }, {
+                where: 
+                {
+                    id: req.params
+                }
+            })            
+        .then((d) => {
+            alert("contentにstoreditemid取れるよ")
+            let data = d.map((p) => {
+                //ok
+            console.log(JSON.stringify(d))
+                  return {
+                    id: p.id,
+                    groupid:p.groupid,
+                    groupName:p.contentgroup.name,
+                    name: p.name,
+                    storeditemid: p.storeditemid
+                }
+            })
+            res.json(data)
+    })
     },
+
     delete: (req, res) => {
         res.send("destroy forum " + req.params.forum);
     }

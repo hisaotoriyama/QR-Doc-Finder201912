@@ -1,25 +1,25 @@
 let db = require('./models/index')
 db.storeditem.create({
-  document: 1,
-  storageplace: 1,
-  originaluser: 1,
-  latestuser: 1
+  document: 28,
+  storageplace: 23,
+  originaluser: 9,
+  latestuser: 9
 })
 db.storeditem.create({
-  document: 2,
-  storageplace: 2,
-  originaluser: 2,
-  latestuser: 2
+  document: 29,
+  storageplace: 24,
+  originaluser: 34,
+  latestuser: 34
 })
 db.storeditem.create({
-  document: 3,
-  storageplace: 3,
-  originaluser: 3,
-  latestuser: 3
+  document: 30,
+  storageplace: 25,
+  originaluser: 35,
+  latestuser: 35
 })
 db.storeditem.create({
-  document: 4,
-  storageplace: 4,
-  originaluser: 4,
-  latestuser: 4
+  document: 31,
+  storageplace: 26,
+  originaluser: 36,
+  latestuser: 36
 })

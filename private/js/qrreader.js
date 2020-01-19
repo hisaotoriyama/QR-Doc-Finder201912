@@ -1,5 +1,3 @@
-
-
 var app = new Vue({
     el: "#app",
     data: {
@@ -59,8 +57,4 @@ var app = new Vue({
                         })
             })
         }}
-        // ,
-        // computed:function(){
-        //     this.Id = req.session.user_id
-        // }
     })

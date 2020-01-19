@@ -111,30 +111,5 @@ var app = new Vue({
     movetoqrreader: function () {
       location.href = "./qrreader.html"
   }
-
-    // selectdocs: function () {
-    //   const headers = {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   };
-    //   const d = {
-    //     headers: headers,
-    //     method: "GET"
-    //   };
-    //   var self = this
-    //   // console.log(this.selectedid);
-    //   fetch('/addstoreditems/' + this.selectedid, d)
-    //     .then((r) => {
-    //       r.json().then((j) => {
-    //         console.log(j);
-    //         self.selectedoriginaluser = j.originaluser;
-    //         self.selecteddocument = j.document;
-    //         self.selectedstorageplace = j.storageplace;
-    //         self.selectedlatestuser = j.latestuser
-    //       })
-    //     })
-    // },
-
-
   }
 })

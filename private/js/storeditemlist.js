@@ -38,52 +38,24 @@ Vue.component("silist", {
     }
 })
 
-
 var app = new Vue({
     el: "#app",
     data: {
         selectedstoreditemlists: "",
-        storeditemlists: ""
-        // [{
-        //     "slistId": 1,
-        //     "docgroupId": 1,
-        //     "docgroupName": "Del Docus",
-        //     "documentId": 1,
-        //     "documentName": "PTS",
-        //     "storageplaceId": 1,
-        //     "storageplaceName": "A-1",
-        //     "originaluserId": 17,
-        //     "originaluserName": "Hisao",
-        //     "latestuserId": 19,
-        //     "latestuserName": "Yoshiko"
-        // },
-        // {
-        //     "slistId": 2,
-        //     "docgroupId": 1,
-        //     "docgroupName": "Import Docs",
-        //     "documentId": 2,
-        //     "documentName": "Gresik",
-        //     "storageplaceId": 2,
-        //     "storageplaceName": "A-2",
-        //     "originaluserId": 18,
-        //     "originaluserName": "Seitaro",
-        //     "latestuserId": 17,
-        //     "latestuserName": "Hisao"
-        // },
-        // {
-        //     "slistId": 3,
-        //     "docgroupId": 1,
-        //     "docgroupName": "Export Docs",
-        //     "documentId": 3,
-        //     "documentName": "Dowa",
-        //     "storageplaceId": 3,
-        //     "storageplaceName": "B-1",
-        //     "originaluserId": 19,
-        //     "originaluserName": "Yoshiko",
-        //     "latestuserId": 18,
-        //     "latestuserName": "Seitaro"
-        // }
-        // ]
+        storeditemlists: "",
+        firstregisteruserId: 3,
+        firstregisteruserName: "",
+        selectedplaceId: "",
+        allplaces: "",
+        eachplace: {
+            id: "",
+            name: ""
+        },
+        firstregistercontentsId: "",
+        firstregistercontentsname: "",
+        firstregistercontentsgroupname: "",
+        documentId: "",
+        registedstoreditemId: ""
     },
 
     methods: {
@@ -91,8 +63,12 @@ var app = new Vue({
             alert("登録するよ")
             // if (this.newName == "") return;
             const data = {
-                "newstorageplace": this.newstorageplace
+                "document": this.firstregistercontentsId,
+                "storageplace": this.selectedplaceId,
+                "originaluser": this.firstregisteruserId,
+                "latestuser": this.firstregisteruserId
             };
+            console.log(data)
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -103,21 +79,18 @@ var app = new Vue({
                 body: JSON.stringify(data)
             };
             var self = this;
-            fetch('/places', d)
+            fetch('/storeditems', d)
                 .then((e) => {
                     e.json().then((j) => {
-                        location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
-
-
+                        this.registedstoreditemId = j.id
                     })
                 }).then((k) => {
                     self.readall();
-                })
+                }).then(this.registerstoreditemid())
                 ;
             ;
             this.newstorageplace = ""
         },
-
 
         updatelist: function () {
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
@@ -126,34 +99,11 @@ var app = new Vue({
             })
             this.selectedstoreditemlists = sil;
             location.href = "../updatestoreditemlist.html"
-            //     const data = {
-            //     "storageplace": this.selectedstoreditemlist
-            // };
-            // const headers = {
-            //     'Accept': 'application/json',
-            //     'Content-Type': 'application/json'
-            // };
-            // const d = {
-            //     headers: headers,
-            //     method: "POST",
-            //     body: JSON.stringify(data)
-            // };
-            // var self = this;
-            // fetch('/controlplace', d)
-            //     .then((e) => {
-            //         e.json().then((j) => {
-            //             console.log(j);
-            //         })
-            //     }).then((k) => {
-            //         this.readall();
-            //     })
-            //     ;
-            // ;
-            // this.newstorageplace = ""
+
         },
 
         readall: function () {
-            alert("千部読み切るよ（20200114）")
+            alert("全部読み切るよ（20200114）")
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -169,6 +119,82 @@ var app = new Vue({
                         self.storeditemlists = j;
                     })
                 })
+        },
+
+        readusername: function (k) {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "GET"
+            };
+            var self = this;
+            fetch('/users/' + k, d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        self.firstregisteruserName = j[0].name;
+                    })
+                })
+        },
+
+
+        readcontentsname: function (k) {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "GET"
+            };
+            var self = this;
+            fetch('/contents/' + k, d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        console.log(j)
+                        self.firstregistercontentsname = j[0].name;
+                    })
+                })
+        },
+
+        getParam: function (name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        },
+
+        //20200119
+        registerstoreditemid: function () {
+            const data = {
+                "storeditemid": this.registedstoreditemId
+            };
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "PUT",
+                body: JSON.stringify(data)
+            };
+            var self = this;
+            fetch('/contents/' + this.registedstoreditemId, d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        // location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
+                    })
+                }).then((k) => {
+                    self.readall();
+                })
+                ;
+            ;
+            // this.newstorageplace = ""
         },
 
         movetouseradmin: function () {
@@ -198,7 +224,45 @@ var app = new Vue({
         movetoqrreader: function () {
             location.href = "./qrreader.html"
         }
+    },
 
+    created: function () {
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
+        const d = {
+            headers: headers1,
+            method: "GET"
+        };
+        var self = this;
+        fetch('/places', d)
+            .then((e) => {
+                e.json().then((j) => {
+                    console.log(j);
+                    self.allplaces = j;
+                })
+            });
 
-    }
+        this.firstregistercontentsId = this.getParam("id")
+        this.firstregistercontentsname = this.getParam("name")
+
+        this.firstregisteruserId = Cookies.get('user_id')
+        return this.readusername(this.firstregisteruserId)
+    },
+
+    mounted: function () {
+
+    },
+
+    // registeruserId: function () {
+    //     let self = this
+    //     this.firstregisteruserId = Cookies.get('user_id')
+    //     return this.readusername(this.firstregisteruserId)
+    // }
+    // この前後が修正必要箇所20200117.Computed以降。
+    // firstregistercontentsname: "",
+    // firstregistercontentsgroupname:""
+
+    // 最後にstoreditemidを飛ばして、contentsに登録する。
 })

@@ -32,6 +32,9 @@ var app = new Vue({
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
+    movetostoreditemregister:function(){
+        location.href = "./storeditemlist.html?id=" + this.textqr.id + "&name=" + this.textqr.name
+    },
   
     movetouseradmin: function () {
         location.href = "./adminuser.html"
