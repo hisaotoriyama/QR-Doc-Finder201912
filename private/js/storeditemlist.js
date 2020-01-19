@@ -61,7 +61,8 @@ var app = new Vue({
     methods: {
         storeditemregister: function () {
             alert("登録するよ")
-            // if (this.newName == "") return;
+            if (this.selectedplaceId == "") return;
+
             const data = {
                 "document": this.firstregistercontentsId,
                 "storageplace": this.selectedplaceId,
@@ -184,8 +185,9 @@ var app = new Vue({
                 body: JSON.stringify(data)
             };
             var self = this;
-            fetch('/contents/' + this.registedstoreditemId, d)
+            fetch('/contents/' + this.firstregistercontentsId, d)
                 .then((e) => {
+                    console.log("ここまできたぞ")
                     e.json().then((j) => {
                         // location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
                     })
@@ -232,7 +234,7 @@ var app = new Vue({
             'Content-Type': 'application/json'
         };
         const d = {
-            headers: headers1,
+            headers: headers,
             method: "GET"
         };
         var self = this;
