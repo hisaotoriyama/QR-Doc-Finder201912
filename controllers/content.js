@@ -54,31 +54,17 @@ module.exports = {
         res.send("edit forum " + req.params.forum);
     },
     update: (req, res) => {
-        db.content.update({
-            // include: [{
-            //     model: db.contentgroup
-            // },
-            // ]
-            // },
-            // {
-                storeditemid: "storeditemid"
-            }, {
+        console.log(req.body)
+        console.log(req.params)
+        db.content.update(req.body, {
                 where: 
                 {
-                    id: req.params
+                    id: Number(req.params.id)
                 }
             })            
         .then((d) => {
             console.log("contentにstoreditemid取れるよ")
             let data = d.map((p) => {
-            console.log(JSON.stringify(d))
-                  return {
-                    id: p.id,
-                    groupid:p.groupid,
-                    groupName:p.contentgroup.name,
-                    name: p.name,
-                    storeditemid: p.storeditemid
-                }
             })
             res.json(data)
     })

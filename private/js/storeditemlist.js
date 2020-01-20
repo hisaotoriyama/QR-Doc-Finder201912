@@ -174,7 +174,7 @@ var app = new Vue({
             console.log(this.registedstoreditemId)
             console.log("***************************::")
             const data = {
-                "storeditemid": Number(this.registedstoreditemId)
+                storeditemid: Number(this.registedstoreditemId)
             };
             const headers = {
                 'Accept': 'application/json',

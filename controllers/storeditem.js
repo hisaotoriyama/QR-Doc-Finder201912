@@ -60,8 +60,7 @@ module.exports = {
             latestuser:Number(req.body.latestuser)
         }
         db.storeditem.create(data).then((p) => {
-            res.status(200).json({
-            })
+            res.status(200).json(p)
         })
     },
 
