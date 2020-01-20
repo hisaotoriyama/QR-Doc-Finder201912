@@ -28,7 +28,7 @@ module.exports = {
                 }
             ]
         }).then((d) => {
-            console.log(JSON.stringify(d))
+            // console.log(JSON.stringify(d))
             let data = d.map((p) => {
                 return {
                     id: p.id,
@@ -60,12 +60,9 @@ module.exports = {
             latestuser:Number(req.body.latestuser)
         }
         db.storeditem.create(data).then((p) => {
-            res.json({
-                id: p.id,
-                storageplace: p.storageplace
+            res.status(200).json({
             })
         })
-        res.send(200)
     },
 
     show: (req, res) => {

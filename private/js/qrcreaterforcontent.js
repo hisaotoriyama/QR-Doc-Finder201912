@@ -30,7 +30,7 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      console.log(data)
+      // console.log(data)
       var self = this;
       fetch('/contents', d)
         .then((e) => {
@@ -38,7 +38,7 @@ var app = new Vue({
             location.href = "./printQR.html?dorp=d&id=" + j.id + "&name=" + j.name
           })
         }).then((k) => {
-          this.readall();
+          // this.readall();
         })
         ;
       ;

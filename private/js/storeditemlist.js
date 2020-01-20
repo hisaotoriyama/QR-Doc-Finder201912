@@ -69,7 +69,7 @@ var app = new Vue({
                 "originaluser": this.firstregisteruserId,
                 "latestuser": this.firstregisteruserId
             };
-            console.log(data)
+            // console.log(data)
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -83,14 +83,13 @@ var app = new Vue({
             fetch('/storeditems', d)
                 .then((e) => {
                     e.json().then((j) => {
-                        this.registedstoreditemId = j.id
-                    })
-                }).then((k) => {
-                    self.readall();
-                }).then(this.registerstoreditemid())
-                ;
-            ;
-            this.newstorageplace = ""
+                        console.log(j);
+                        self.registedstoreditemId = j.id
+                    })})
+                .then((i) => {self.registerstoreditemid()})
+                .then((k) => {
+                    // self.readall()
+                })
         },
 
         updatelist: function () {
@@ -172,8 +171,10 @@ var app = new Vue({
 
         //20200119
         registerstoreditemid: function () {
+            console.log(this.registedstoreditemId)
+            console.log("***************************::")
             const data = {
-                "storeditemid": this.registedstoreditemId
+                "storeditemid": Number(this.registedstoreditemId)
             };
             const headers = {
                 'Accept': 'application/json',
@@ -192,7 +193,7 @@ var app = new Vue({
                         // location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
                     })
                 }).then((k) => {
-                    self.readall();
+                    // self.readall();
                 })
                 ;
             ;
@@ -246,10 +247,10 @@ var app = new Vue({
                 })
             });
 
-        this.firstregistercontentsId = this.getParam("id")
+        this.firstregistercontentsId = Number(this.getParam("id"))
         this.firstregistercontentsname = this.getParam("name")
 
-        this.firstregisteruserId = Cookies.get('user_id')
+        this.firstregisteruserId = Number(Cookies.get('user_id'))
         return this.readusername(this.firstregisteruserId)
     },
 

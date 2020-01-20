@@ -69,9 +69,8 @@ module.exports = {
                 }
             })            
         .then((d) => {
-            alert("contentにstoreditemid取れるよ")
+            console.log("contentにstoreditemid取れるよ")
             let data = d.map((p) => {
-                //ok
             console.log(JSON.stringify(d))
                   return {
                     id: p.id,
