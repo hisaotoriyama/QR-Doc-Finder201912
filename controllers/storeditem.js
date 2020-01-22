@@ -28,7 +28,7 @@ module.exports = {
                 }
             ]
         }).then((d) => {
-            // console.log(JSON.stringify(d))
+            console.log(JSON.stringify(d))
             let data = d.map((p) => {
                 return {
                     id: p.id,

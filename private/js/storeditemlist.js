@@ -85,11 +85,13 @@ var app = new Vue({
                     e.json().then((j) => {
                         console.log(j);
                         self.registedstoreditemId = j.id
-                    })})
-                .then((i) => {self.registerstoreditemid()})
+                    })
+                .then((i) => {
+                    self.registerstoreditemid(i)
+                })
                 .then((k) => {
                     // self.readall()
-                })
+                })})
         },
 
         updatelist: function () {

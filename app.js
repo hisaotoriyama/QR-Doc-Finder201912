@@ -54,9 +54,7 @@ let sessionCheck = (req, res, next) => {
 app.use('/', express.static(path.join( __dirname, '/public')));
 app.use('/private', sessionCheck, express.static(path.join( __dirname, '/private' )) );
 
-
 // start application
-//app.listen(3000)
 var https = require('https');
 var fs = require('fs');
 var ssl_server_key = 'server_key.pem';
