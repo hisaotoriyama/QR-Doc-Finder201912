@@ -10,21 +10,20 @@ module.exports = {
                 model: db.contentgroup
             },
             ]
-            })            
-        .then((d) => {
-            let data = d.map((p) => {
-                //ok
-            console.log(JSON.stringify(d))
-                  return {
-                    id: p.id,
-                    groupid:p.groupid,
-                    groupName:p.contentgroup.name,
-                    name: p.name,
-                    storeditemid: p.storeditemid
-                }
+        })
+            .then((d) => {
+                let data = d.map((p) => {
+                    // console.log(JSON.stringify(d))
+                    return {
+                        id: p.id,
+                        groupid: p.groupid,
+                        groupName: p.contentgroup.name,
+                        name: p.name,
+                        storeditemid: p.storeditemid
+                    }
+                })
+                res.json(data)
             })
-            res.json(data)
-    })
     },
     new: (req, res) => {
         res.send("new forum");
@@ -33,18 +32,20 @@ module.exports = {
     create: (req, res) => {
         console.log(req.body.newcontent)
         let data = {
-            groupid:req.body.groupid,
+            groupid: Number(req.body.groupid),
             name: req.body.newcontent,
             // storeditemid: req.body.storeditemid
         }
-        db.content.create(data).then((p) => {
-            res.status(200).json({
-                id: p.id,
-                groupid:p.groupid,
-                name: p.name,
-                // storeditemid: p.storeditemid
+        console.log(data);
+        db.content.create(data)
+            .then((p) => {
+                res.status(200).json({
+                    id: p.id,
+                    groupid: p.groupid,
+                    name: p.name,
+                    // storeditemid: p.storeditemid
+                })
             })
-        })
     },
 
     show: (req, res) => {
@@ -57,17 +58,16 @@ module.exports = {
         console.log(req.body)
         console.log(req.params)
         db.content.update(req.body, {
-                where: 
-                {
-                    id: Number(req.params.id)
-                }
-            })            
-        .then((d) => {
-            console.log("contentにstoreditemid取れるよ")
-            let data = d.map((p) => {
+            where:
+            {
+                id: Number(req.params.id)
+            }
+        })
+            .then((d) => {
+                let data = d.map((p) => {
+                })
+                res.json(data)
             })
-            res.json(data)
-    })
     },
 
     delete: (req, res) => {

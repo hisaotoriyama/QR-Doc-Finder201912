@@ -7,18 +7,18 @@ module.exports = {
     index: (req, res) => {
         db.contentgroup.findAll(
             // { include: [db.user]}
-            )            
-        .then((d) => {
-            let data = d.map((p) => {
-                  return {
-                    id: p.id,
-                    name: p.name
-                }
+        )
+            .then((d) => {
+                let data = d.map((p) => {
+                    return {
+                        id: p.id,
+                        name: p.name
+                    }
+                })
+                res.json(data)
+                // console.log(data)
+                //ok
             })
-            res.json(data)
-            // console.log(data)
-                    //ok
-    })
     },
     new: (req, res) => {
         res.send("new forum");
@@ -43,19 +43,19 @@ module.exports = {
     edit: (req, res) => {
         res.send("edit forum " + req.params.forum);
     },
-    
-update: (req, res) => {
-    db.contentgroup.update({
-        name:req.body.name
-    },{
-      where:{
-        id:req.params.id
-      }
-    }).then((p)=>{
-      let data = p
-      res.json(data)
-    })
-  },
+
+    update: (req, res) => {
+        db.contentgroup.update({
+            name: req.body.name
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then((p) => {
+            let data = p
+            res.json(data)
+        })
+    },
 
     delete: (req, res) => {
         res.send("destroy forum " + req.params.forum);

@@ -28,7 +28,7 @@ module.exports = {
                 }
             ]
         }).then((d) => {
-            console.log(JSON.stringify(d))
+            // console.log(JSON.stringify(d))
             let data = d.map((p) => {
                 return {
                     id: p.id,
@@ -73,11 +73,11 @@ module.exports = {
 
     update: (req, res) => {
         db.storeditem.update({
-            storageplace: req.body.storageplace,
-            latestuser: req.body.latestuser
+            storageplace:Number(req.body.storageplace),
+            latestuser:Number(req.body.latestuser)
         }, {
             where: {
-                document: req.params.id
+                document: Number(req.params.id)
             }
         }).then((p) => {
             let data = p

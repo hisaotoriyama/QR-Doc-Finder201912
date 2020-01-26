@@ -20,11 +20,10 @@ module.exports = {
   },
 
   show: (req, res) => {
-    // console.log("Show TIME")
     console.log(req.params)
     db.user.findAll({
       where: {
-        id: req.params.id
+        id: Number(req.params.id)
       }
     })
       .then((d) => {

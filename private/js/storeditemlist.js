@@ -43,7 +43,7 @@ var app = new Vue({
     data: {
         selectedstoreditemlists: "",
         storeditemlists: "",
-        firstregisteruserId: 3,
+        firstregisteruserId: "",
         firstregisteruserName: "",
         selectedplaceId: "",
         allplaces: "",
@@ -60,7 +60,7 @@ var app = new Vue({
 
     methods: {
         storeditemregister: function () {
-            alert("登録するよ")
+            alert("登録")
             if (this.selectedplaceId == "") return;
 
             const data = {
@@ -86,12 +86,13 @@ var app = new Vue({
                         console.log(j);
                         self.registedstoreditemId = j.id
                     })
-                .then((i) => {
-                    self.registerstoreditemid(i)
+                        .then((i) => {
+                            self.registerstoreditemid(i)
+                        })
+                        .then((k) => {
+                            self.readall()
+                        })
                 })
-                .then((k) => {
-                    // self.readall()
-                })})
         },
 
         updatelist: function () {
@@ -101,11 +102,9 @@ var app = new Vue({
             })
             this.selectedstoreditemlists = sil;
             location.href = "../updatestoreditemlist.html"
-
         },
 
         readall: function () {
-            alert("全部読み切るよ（20200114）")
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -141,7 +140,6 @@ var app = new Vue({
                 })
         },
 
-
         readcontentsname: function (k) {
             const headers = {
                 'Accept': 'application/json',
@@ -155,7 +153,7 @@ var app = new Vue({
             fetch('/contents/' + k, d)
                 .then((e) => {
                     e.json().then((j) => {
-                        console.log(j)
+                        // console.log(j)
                         self.firstregistercontentsname = j[0].name;
                     })
                 })
@@ -171,7 +169,6 @@ var app = new Vue({
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         },
 
-        //20200119
         registerstoreditemid: function () {
             console.log(this.registedstoreditemId)
             console.log("***************************::")
@@ -190,7 +187,6 @@ var app = new Vue({
             var self = this;
             fetch('/contents/' + this.firstregistercontentsId, d)
                 .then((e) => {
-                    console.log("ここまできたぞ")
                     e.json().then((j) => {
                         // location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
                     })

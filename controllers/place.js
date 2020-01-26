@@ -33,7 +33,6 @@ module.exports = {
             })
         })
 ///        res.send(200)
-        // res.send(200)
     },
 
     show: (req, res) => {
@@ -47,7 +46,7 @@ module.exports = {
             name:req.body.name
         },{
           where:{
-            id:req.params.id
+            id:Number(req.params.id)
           }
         }).then((p)=>{
           let data = p

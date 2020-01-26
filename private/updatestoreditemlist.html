@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-    <!-- <script src="jquery.min.js"></script>
-    <script src="jquery.qrcode.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -56,6 +54,8 @@
                 <th>Latest</th>
                 <th>User</th>
 
+
+
                 <tbody>
                     <th></th>
                     <th></th>
@@ -70,65 +70,50 @@
                     <th>Id</th>
                     <th>Name</th>
                     <tr>
-                        <td><button type="button" class="btn btn-outline-primary" v-on:click="storeditemregister">Initial Register</button></td>
+                        <td><button type="button" class="btn btn-outline-primary"
+                                v-on:click="storeditemregister">Initial Register</button></td>
                         <td>Auto Id</td>
                         <td></td>
-                        <td></td>
+                        <!-- <td> <select v-model="selectedcontentgroupId">
+                                <option v-for="eachcontentgroup in allcontentgroups" v-bind:value="eachcontentgroup.id">
+                                    {{ eachcontentgroup.name }}
+                                </option>
+                            </select>
+                            <span>Selected: {{ selectedcontentgroupId }}</span></td> -->
+   
+                        <td>
+                            <!-- 20200119 -->
+                            <!-- <input type="text" class="form-control" v-bind:value="firstregistercontentsgroupname"> -->
+                        </td>         
                         <td><input type="text" class="form-control" v-bind:value="firstregistercontentsId"></td>
-                        <td></td>
+                        <td>
+                            <!-- 20200119 -->
+                            <!-- <input type="text" class="form-control" v-model="firstregistercontentsname"> -->
+                        </td>
                         <td></td>
                         <td> <select v-model="selectedplaceId">
                                 <option v-for="eachplace in allplaces" v-bind:value="eachplace.id">
                                     {{ eachplace.name }}
                                 </option>
                             </select>
-                            <span>Selected: {{ selectedplaceId }}</span>
-                        </td>
+                            <span>Selected: {{ selectedplaceId }}</span></td>
+
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserId"></td>
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserName"></td>
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserId"></td>
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserName"></td>
                         <td></td>
+
+
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button></td>
+                        <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button>
+                        <td>
                     </tr>
-                    <!-- <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr> -->
+                    <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr>
                     <tr is=silist v-for="list in storeditemlists" v-bind:storage="list"></tr>
 
-                    <tr>
-                        <td>
-                            <!-- <button  v-on:click="usermodify" >Modify</button> -->
-                            <button type="button" class="btn btn-outline-primary" >Modify</button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <select v-model="selectedplaceId">
-                                <option v-for="eachplace in allplaces" v-bind:value="eachplace.id">
-                                    {{ eachplace.name }}
-                                </option>
-                            </select>
-                            <span>Selected: {{ selectedplaceId }}</span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <select v-model="selecteuserId">
-                                <option v-for="eachuser in allusers" v-bind:value="eachuser.id">
-                                    {{ eachuser.name }}
-                                </option>
-                            </select>
-                            <span>Selected: {{ selecteduserId }}</span>
-                        </td>
-                        <td></td>
-                    </tr>
 
                 </tbody>
 
