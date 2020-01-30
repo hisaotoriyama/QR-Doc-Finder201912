@@ -46,6 +46,7 @@ var app = new Vue({
         firstregisteruserId: "",
         firstregisteruserName: "",
         selectedplaceId: "",
+        modifiedselectedplaceId:"",
         allplaces: "",
         eachplace: {
             id: "",
@@ -95,13 +96,15 @@ var app = new Vue({
                 })
         },
 
-        updatelist: function () {
+        modify: function () {
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
             var sil = this.storeditemlists.filter((e) => {
                 return e.check == true
             })
+            console.log(sil);
             this.selectedstoreditemlists = sil;
-            location.href = "../updatestoreditemlist.html"
+
+            // location.href = "../updatestoreditemlist.html"
         },
 
         readall: function () {
@@ -207,6 +210,7 @@ var app = new Vue({
         movetocontentsgroupadmin: function () {
             location.href = "./admincontentgroup.html"
         },
+        
         movetoqrcontent: function () {
             location.href = "./qrcreaterforcontent.html"
         },
@@ -224,37 +228,41 @@ var app = new Vue({
         },
         movetoqrreader: function () {
             location.href = "./qrreader.html"
+        },
+        readplaces:function () {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "GET"
+            };
+            var self = this;
+            fetch('/places', d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        // console.log(j);
+                        self.allplaces = j;
+                    })
+                });
+    
+            this.firstregistercontentsId = Number(this.getParam("id"))
+            this.firstregistercontentsname = this.getParam("name")
+            console.log(Cookies.get('user_id'))
+    
+            this.firstregisteruserId = Number(Cookies.get('user_id'))
+            return this.readusername(this.firstregisteruserId)
         }
-    },
-
-    created: function () {
-        const headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        };
-        const d = {
-            headers: headers,
-            method: "GET"
-        };
-        var self = this;
-        fetch('/places', d)
-            .then((e) => {
-                e.json().then((j) => {
-                    console.log(j);
-                    self.allplaces = j;
-                })
-            });
-
-        this.firstregistercontentsId = Number(this.getParam("id"))
-        this.firstregistercontentsname = this.getParam("name")
-
-        this.firstregisteruserId = Number(Cookies.get('user_id'))
-        return this.readusername(this.firstregisteruserId)
-    },
-
-    mounted: function () {
 
     },
+
+    created: function() {
+        return this.readplaces();
+    },
+    computed:function(){
+        return this.updatelist()
+    }
 
     // registeruserId: function () {
     //     let self = this

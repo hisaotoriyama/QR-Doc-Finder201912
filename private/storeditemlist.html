@@ -8,40 +8,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-    <!-- <script src="jquery.min.js"></script>
-    <script src="jquery.qrcode.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
 </head>
 
 <body>
     <div id="app">
         <div class="row">
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetouseradmin">User(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR
-                    Place(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR
-                    Content(C)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetostoreditemread">StoredItem(R)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-                    v-on:click="movetoprintqr">printQR</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR
-                    Reader</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetouseradmin">User(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR Place(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QRContent(C)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemread">StoredItem(R)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoprintqr">printQR</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR Reader</button></td>
             <table class="table table table-striped ml-5 mt-5">
                 <th></th>
                 <th>ID</th>
@@ -70,7 +50,8 @@
                     <th>Id</th>
                     <th>Name</th>
                     <tr>
-                        <td><button type="button" class="btn btn-outline-primary" v-on:click="storeditemregister">Initial Register</button></td>
+                        <td><button type="button" class="btn btn-outline-primary"
+                                v-on:click="storeditemregister">Initial Register</button></td>
                         <td>Auto Id</td>
                         <td></td>
                         <td></td>
@@ -92,7 +73,8 @@
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button></td>
+                        <td><button type="button" class="btn btn-outline-primary" v-on:click="readall">Read All</button>
+                        </td>
                     </tr>
                     <!-- <tr is=silist v-for="list in selectedstoreditemlist" v-bind:storage="list"></tr> -->
                     <tr is=silist v-for="list in storeditemlists" v-bind:storage="list"></tr>
@@ -100,7 +82,7 @@
                     <tr>
                         <td>
                             <!-- <button  v-on:click="usermodify" >Modify</button> -->
-                            <button type="button" class="btn btn-outline-primary" >Modify</button>
+                            <button type="button" class="btn btn-outline-primary">Modify</button>
                         </td>
                         <td></td>
                         <td></td>
@@ -134,19 +116,20 @@
 
             </table>
 
-
-
-
-
         </div>
-        <pre>{{$data.firstregisteruserName}}</pre>
-
+        <pre>{{$data}}</pre>
 
     </div>
 
     <script src="./js/storeditemlist.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 </body>
-
 </html>
