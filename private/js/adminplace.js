@@ -24,9 +24,7 @@ var app = new Vue({
       fetch('/places', d)
         .then((e) => {
           e.json().then((j) => {
-            location.href = "./printQR.html?dorp=p&id="+j.id+"&name="+j.name
-
-            
+            location.href = "./printQR.html?dorp=p&id="+j.id+"&name="+j.name   
           })
         }).then((k) => {
           self.readall();
@@ -53,8 +51,6 @@ var app = new Vue({
           })
         })
     },
-
-
 
     placemodify: function () {
       const data = {
@@ -94,15 +90,15 @@ var app = new Vue({
     movetoqrcontent:function(){
       location.href = "./qrcreaterforcontent.html"
     },
-    movetostoreditemread:function(){
+    movetostoreditem:function(){
       location.href = "./storeditemlist.html"
     },
-    movetostoreditemcreate:function(){
-      location.href = "./storeditemlist.html"
-    },
-    movetostoreditemupdate:function(){
-      location.href = "./storeditemlist.html"
-    },
+    // movetostoreditemcreate:function(){
+    //   location.href = "./storeditemlist.html"
+    // },
+    // movetostoreditemupdate:function(){
+    //   location.href = "./storeditemlist.html"
+    // },
     movetoprintqr:function(){
       location.href = "./printQR.html"
     }, 

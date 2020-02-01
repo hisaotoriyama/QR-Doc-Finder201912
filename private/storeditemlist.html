@@ -14,15 +14,22 @@
 <body>
     <div id="app">
         <div class="row">
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetouseradmin">User(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR Place(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QRContent(C)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemread">StoredItem(R)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoprintqr">printQR</button></td>
-            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR Reader</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+                    v-on:click="movetouseradmin">User(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR
+                    Place(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+                    v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+                    v-on:click="movetoqrcontent">QRContent(C)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+                    v-on:click="movetostoreditem">StoredItem</button></td>
+            <!-- <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td> -->
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+                    v-on:click="movetoprintqr">printQR</button></td>
+            <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR
+                    Reader</button></td>
             <table class="table table table-striped ml-5 mt-5">
                 <th></th>
                 <th>ID</th>
@@ -59,12 +66,12 @@
                         <td><input type="text" class="form-control" v-bind:value="firstregistercontentsId"></td>
                         <td></td>
                         <td></td>
-                        <td> <select v-model="selectedplaceId">
+                        <td> <select v-model="firstregisteredselectedplaceId">
                                 <option v-for="eachplace in allplaces" v-bind:value="eachplace.id">
                                     {{ eachplace.name }}
                                 </option>
                             </select>
-                            <span>Selected: {{ selectedplaceId }}</span>
+                            <span>Selected: {{ firstregisteredselectedplaceId }}</span>
                         </td>
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserId"></td>
                         <td><input type="text" class="form-control" v-bind:value="firstregisteruserName"></td>
@@ -83,7 +90,7 @@
                     <tr>
                         <td>
                             <!-- <button  v-on:click="usermodify" >Modify</button> -->
-                            <button type="button" class="btn btn-outline-primary">Modify</button>
+                            <button type="button" class="btn btn-outline-primary" 　v-on:click="modify">Modify</button>
                         </td>
                         <td></td>
                         <td></td>
@@ -92,23 +99,24 @@
                         <td></td>
                         <td></td>
                         <td>
-                            <select v-model="selectedplaceId">
-                                <option v-for="eachplace in allplaces" v-bind:value="eachplace.id">
-                                    {{ eachplace.name }}
+                            <select v-model="modifiedselectedplaceId">
+                                <option v-for="eachplacetobemodifed in allplaces"
+                                    v-bind:value="eachplacetobemodifed.id">
+                                    {{eachplacetobemodifed.name }}
                                 </option>
                             </select>
-                            <span>Selected: {{ selectedplaceId }}</span>
+                            <span>Selected: {{ modifiedselectedplaceId}}</span>
                         </td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td>
-                            <select v-model="selecteuserId">
+                            <select v-model="modifiedselecteduserId">
                                 <option v-for="eachuser in allusers" v-bind:value="eachuser.id">
                                     {{ eachuser.name }}
                                 </option>
                             </select>
-                            <span>Selected: {{ selecteduserId }}</span>
+                            <span>Selected: {{ modifiedselecteduserId }}</span>
                         </td>
                         <td></td>
                     </tr>
@@ -116,7 +124,10 @@
                 </tbody>
 
             </table>
-
+            <table class="table table table-striped ml-5 mt-5">
+                <td>LogOut</td>
+                <td><button type="button" class="btn btn-outline-primary" href="/logout">Logout</button></td>
+            </table>
         </div>
         <pre>{{$data}}</pre>
 
@@ -133,4 +144,5 @@
 
 
 </body>
+
 </html>

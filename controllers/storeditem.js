@@ -77,7 +77,7 @@ module.exports = {
             latestuser:Number(req.body.latestuser)
         }, {
             where: {
-                document: Number(req.params.id)
+                id: Number(req.params.id)
             }
         }).then((p) => {
             let data = p

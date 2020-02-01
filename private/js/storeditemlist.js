@@ -45,28 +45,30 @@ var app = new Vue({
         storeditemlists: "",
         firstregisteruserId: "",
         firstregisteruserName: "",
-        selectedplaceId: "",
-        modifiedselectedplaceId:"",
+        firstregisteredselectedplaceId: "",
         allplaces: "",
         eachplace: {
             id: "",
             name: ""
         },
+        allusers: "",
         firstregistercontentsId: "",
         firstregistercontentsname: "",
         firstregistercontentsgroupname: "",
         documentId: "",
-        registedstoreditemId: ""
+        registedstoreditemId: "",
+        modifiedselectedplaceId: "",
+        modifiedselecteduserId: ""
     },
 
     methods: {
         storeditemregister: function () {
             alert("登録")
-            if (this.selectedplaceId == "") return;
+            if (this.firstregisteredselectedplaceId == "") return;
 
             const data = {
                 "document": this.firstregistercontentsId,
-                "storageplace": this.selectedplaceId,
+                "storageplace": this.firstregisteredselectedplaceId,
                 "originaluser": this.firstregisteruserId,
                 "latestuser": this.firstregisteruserId
             };
@@ -97,16 +99,61 @@ var app = new Vue({
         },
 
         modify: function () {
+            if (this.modifiedselectedplaceId == "" || this.modifiedselecteduserId == "") return;
+            alert("更新開始")
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
             var sil = this.storeditemlists.filter((e) => {
                 return e.check == true
             })
-            console.log(sil);
+            // console.log(sil);
             this.selectedstoreditemlists = sil;
+            console.log(this.selectedstoreditemlists.length)
+            let self = this;
+            let changestoreditem = function () {
+                for (i = 0; i < self.selectedstoreditemlists.length; i++) {
+                    self.selectedstoreditemlists[i].storageplace = self.modifiedselectedplaceId;
+                    self.selectedstoreditemlists[i].latestuser = self.modifiedselecteduserId;
+                    console.log(self.selectedstoreditemlists[i])
+                    self.storeditemupdate(self.selectedstoreditemlists[i]);
+                }
+            }
+            changestoreditem();
+            return this.readall();
 
-            // location.href = "../updatestoreditemlist.html"
         },
+        storeditemupdate: function (v) {
+            alert("FETCH開始")
+            const data = {
+                "storageplace": v.storageplace,
+                "latestuser": v.latestuser
+            };
+            // console.log(data)
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "PUT",
+                body: JSON.stringify(data)
+            };
+            var self = this;
+            fetch('/storeditems/'+v.id, d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        alert("更新完了")
+                        console.log(j);
+                        // self.registedstoreditemId = j.id
+                    })
+                        .then((i) => {
+                            // self.registerstoreditemid(i)
+                        })
+                        .then((k) => {
+                            // self.readall()
+                        })
+                })
 
+        },
         readall: function () {
             const headers = {
                 'Accept': 'application/json',
@@ -210,26 +257,26 @@ var app = new Vue({
         movetocontentsgroupadmin: function () {
             location.href = "./admincontentgroup.html"
         },
-        
+
         movetoqrcontent: function () {
             location.href = "./qrcreaterforcontent.html"
         },
-        movetostoreditemread: function () {
+        movetostoreditem: function () {
             location.href = "./storeditemlist.html"
         },
-        movetostoreditemcreate: function () {
-            location.href = "./storeditemlist.html"
-        },
-        movetostoreditemupdate: function () {
-            location.href = "./storeditemlist.html"
-        },
+        // movetostoreditemcreate: function () {
+        //     location.href = "./storeditemlist.html"
+        // },
+        // movetostoreditemupdate: function () {
+        //     location.href = "./storeditemlist.html"
+        // },
         movetoprintqr: function () {
             location.href = "./printQR.html"
         },
         movetoqrreader: function () {
             location.href = "./qrreader.html"
         },
-        readplaces:function () {
+        readplaces: function () {
             const headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -246,21 +293,50 @@ var app = new Vue({
                         self.allplaces = j;
                     })
                 });
-    
+
+            // this.firstregistercontentsId = Number(this.getParam("id"))
+            // this.firstregistercontentsname = this.getParam("name")
+            // this.firstregisteruserId = Number(Cookies.get('user_id'))
+            // return this.readusername(this.firstregisteruserId)
+        },
+
+        readusers: function () {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "GET"
+            };
+            var self = this;
+            fetch('/users', d)
+                .then((e) => {
+                    e.json().then((j) => {
+                        // console.log(j);
+                        self.allusers = j;
+                    })
+                });
+
             this.firstregistercontentsId = Number(this.getParam("id"))
             this.firstregistercontentsname = this.getParam("name")
-            console.log(Cookies.get('user_id'))
-    
+            // console.log(Cookies.get('user_id'))
+
             this.firstregisteruserId = Number(Cookies.get('user_id'))
             return this.readusername(this.firstregisteruserId)
         }
 
+
     },
 
-    created: function() {
+    created: function () {
+        return this.readusers();
+    },
+    mounted: function () {
         return this.readplaces();
     },
-    computed:function(){
+
+    computed: function () {
         return this.updatelist()
     }
 

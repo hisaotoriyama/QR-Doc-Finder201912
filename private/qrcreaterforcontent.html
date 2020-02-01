@@ -24,11 +24,11 @@
       <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR
           Content(C)</button></td>
       <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-          v-on:click="movetostoreditemread">StoredItem(R)</button></td>
-      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+          v-on:click="movetostoreditem">StoredItem</button></td>
+      <!-- <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
           v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
       <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
-          v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
+          v-on:click="movetostoreditemupdate">StoredItem(U)</button></td> -->
       <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
           v-on:click="movetoprintqr">printQR</button></td>
       <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR
@@ -78,7 +78,10 @@
         </tr>
 
       </table>
-
+      <table class="table table table-striped ml-5 mt-5">
+        <td>LogOut</td>
+        <td><button type="button" class="btn btn-outline-primary" href="/logout">Logout</button></td>
+      </table>
 
       <pre>{{$data}}</pre>
 

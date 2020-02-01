@@ -2,6 +2,8 @@ var app = new Vue({
     el: "#app",
     data: {
         textqr:null,
+        display: true,
+
     },
     computed: {
         qrtxt: function() {
@@ -10,7 +12,7 @@ var app = new Vue({
     },
     methods: {  
       qrcreation: function (i) {
-        alert("Document QR発行するよ")
+        alert("QR発行")
         let dorpqr = this.getParam('dorp')
         let idqr = this.getParam('id')
         let qrname = this.getParam('name')
@@ -20,7 +22,14 @@ var app = new Vue({
           name:qrname
         }
         $('#qrprint').html("");
-        $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(this.textqr)})
+        $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(this.textqr)});
+        console.log(this.getParam('dorp'));
+        if(this.getParam('dorp')="p"){
+            this.display=false;
+        }else{
+            this.display=true
+        }
+
       },
 
       getParam: function (name, url) {
@@ -48,19 +57,23 @@ var app = new Vue({
     movetoqrcontent: function () {
         location.href = "./qrcreaterforcontent.html"
     },
-    movetostoreditemread: function () {
+    movetostoreditem: function () {
         location.href = "./storeditemlist.html"
     },
-    movetostoreditemcreate: function () {
-        location.href = "./storeditemlist.html"
-    },
-    movetostoreditemupdate: function () {
-        location.href = "./storeditemlist.html"
-    },
+    // movetostoreditemcreate: function () {
+    //     location.href = "./storeditemlist.html"
+    // },
+    // movetostoreditemupdate: function () {
+    //     location.href = "./storeditemlist.html"
+    // },
     movetoprintqr: function () {
         location.href = "./printQR.html"
-    }, movetoqrreader: function () {
+    }, 
+    movetoqrreader: function () {
         location.href = "./qrreader.html"
     }
+    },
+
+    created: function () {
     }
   })

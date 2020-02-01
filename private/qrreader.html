@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>QRCode Reader</title>
   <style>
     /* 全体のレイアウト調整 */
-    #contents { display:flex; width:650px;}
-    #camera, #picture, #result { justify-content:center; margin:5px;}
+    #contents {
+      display: flex;
+      width: 650px;
+    }
+
+    #camera,
+    #picture,
+    #result {
+      justify-content: center;
+      margin: 5px;
+    }
 
     /* リーダー部分 */
-    #picture { display:none; }
-    #result { border: 1px solid gray; width:300px; height:200px; padding:10px;}
-    small { color:gray; }
+    #picture {
+      display: none;
+    }
+
+    #result {
+      border: 1px solid gray;
+      width: 300px;
+      height: 200px;
+      padding: 10px;
+    }
+
+    small {
+      color: gray;
+    }
   </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 
@@ -28,9 +49,9 @@
     <!-- 処理用 -->
     <canvas id="picture" width="300" height="200"></canvas>
 
-  <div id="app">
+    <div id="app">
 
-    
+
       <!-- 読み取り結果 from 88行-->
       <input id="result" v-model="globalData.QRdata" />
       <table class="table" class="itemList">
@@ -38,7 +59,7 @@
         <button type="button" v-on:click="dataexport">Re-Storage</button>
       </table>
 
-      
+
 
 
 
@@ -50,11 +71,14 @@
       </pre>
       <pre>
           {{$data.storageplace}}
-      </pre> 
+      </pre>
 
     </div>
 
-
+    <table class="table table table-striped ml-5 mt-5">
+      <td>LogOut</td>
+      <td><button type="button" class="btn btn-outline-primary" href="/logout">Logout</button></td>
+    </table>
   </section>
 
   <script src="./js/jsQR.min.js"></script>
@@ -163,22 +187,22 @@
      * @param {String} data
      * @return {void}
      */
-     function setQRResult(id, data){
-  //$(id).innerHTML = escapeHTML(data);
-  // console.log(data)
-  globalData.QRdata = escapeHTML(data)
-  // console.log(globalData.QRdata)
-}
+    function setQRResult(id, data) {
+      //$(id).innerHTML = escapeHTML(data);
+      // console.log(data)
+      globalData.QRdata = escapeHTML(data)
+      // console.log(globalData.QRdata)
+    }
 
-/**
- * jQuery style wrapper
- *
- * @param {string} selector
- * @return {Object}
- */
- function $(selector){
-  return( document.querySelector(selector) );
-}
+    /**
+     * jQuery style wrapper
+     *
+     * @param {string} selector
+     * @return {Object}
+     */
+    function $(selector) {
+      return (document.querySelector(selector));
+    }
 
 
     /**

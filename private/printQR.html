@@ -24,21 +24,31 @@
 <body>
   <div id="app">
     <div class="row">
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetouseradmin">User(Adm)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR Place(Adm)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR Content(C)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemread">StoredItem(R)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoprintqr">printQR</button></td>
-        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR Reader</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+          v-on:click="movetouseradmin">User(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoplaceadmin">QR
+          Place(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+          v-on:click="movetocontentsgroupadmin">Cont.Group(Adm)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrcontent">QR
+          Content(C)</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+          v-on:click="movetostoreditem">StoredItem</button></td>
+      <!-- <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemcreate">StoredItem(C)</button></td>
+        <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetostoreditemupdate">StoredItem(U)</button></td> -->
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5"
+          v-on:click="movetoprintqr">printQR</button></td>
+      <td><button type="button" class="btn btn-outline-primary pl-1 ml-4 mt-5" v-on:click="movetoqrreader">QR
+          Reader</button></td>
       <table class="table table table-striped ml-5 mt-5">
-          <td><button type="button" class="btn btn-outline-primary" v-on:click="qrcreation">QR Creation</button>
-          </td>
-          <td><button type="button" class="btn btn-outline-primary" v-on:click="movetostoreditemregister">Stroage Register</button>
-          </td>
-          <td><input type="button" class="btn btn-outline-primary" value="Print" onclick="window.print();" /></td>
+        <td><button type="button" class="btn btn-outline-primary" v-on:click="qrcreation">QR Creation</button></td>
+
+        <!-- 次はplace登録の際は消える必要がある。v-showするか？ -->
+        <!-- <p v-if="display"> -->
+        <td><button type="button" class="btn btn-outline-primary" v-on:click="movetostoreditemregister"
+            v-if="display">Stroage Register</button></td>
+        <!-- </p> -->
+        <td><input type="button" class="btn btn-outline-primary" value="Print" onclick="window.print();" /></td>
       </table>
 
 
@@ -47,11 +57,15 @@
 
     <div class="row">
       <div id="qrprint" class="ml-5 mt-5"></div>
-          
-      
-     
+
+
+
     </div>
     <pre>{{qrtxt}}</pre>
+    <table class="table table table-striped ml-5 mt-5">
+      <td>LogOut</td>
+      <td><button type="button" class="btn btn-outline-primary" href="/logout">Logout</button></td>
+    </table>
   </div>
 
   <script src="./js/printQR.js"></script>

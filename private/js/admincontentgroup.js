@@ -93,15 +93,15 @@ var app = new Vue({
     movetoqrcontent: function () {
       location.href = "./qrcreaterforcontent.html"
     },
-    movetostoreditemread: function () {
+    movetostoreditem: function () {
       location.href = "./storeditemlist.html"
     },
-    movetostoreditemcreate: function () {
-      location.href = "./storeditemlist.html"
-    },
-    movetostoreditemupdate: function () {
-      location.href = "./storeditemlist.html"
-    },
+    // movetostoreditemcreate: function () {
+    //   location.href = "./storeditemlist.html"
+    // },
+    // movetostoreditemupdate: function () {
+    //   location.href = "./storeditemlist.html"
+    // },
     movetoprintqr: function () {
       location.href = "./printQR.html"
     },

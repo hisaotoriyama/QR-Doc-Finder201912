@@ -1,11 +1,11 @@
 let express = require('express')
 let Res = require('express-resource')
 let cookieParser = require('cookie-parser')
+// このNode.jsはLogin時でSession使っている。ただそれ以降のプログラムではCookiesを使って各種プログラミング作成している。
 let session = require('express-session')
-// let path = require('path')
 let login = require('./routes/login')
 let controlplace = require('./routes/controlplace')
-// let logout = require('./routes/logout')
+let logout = require('./routes/logout')
 let bodyParser = require('body-parser');
 let path = require('path');
 
@@ -36,8 +36,9 @@ app.resource('contentgroups', require('./controllers/contentgroup'), { id: 'id' 
 
 //loginはresouce使ったCRUD不要。したがってroutesできる。
 // app.resource('logins', require('./controllers/login'), { id: 'id' })
+
 app.use('/login', login)
-// app.use('/logout', logout)
+app.use('/logout', logout)
 app.use('/controlplace', controlplace)
 
 // これだとpublic / privateのだしわけができない
