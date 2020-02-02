@@ -2,7 +2,7 @@
 //model/content.jsの変更も忘れないこと。
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('users','isAdmin',{
+    return queryInterface.addColumn('users','is_admin',{
       type: Sequelize.BOOLEAN,
       allowNull: false,
       defaultValue: false,
@@ -10,6 +10,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('users','isAdmin');
+    return queryInterface.removeColumn('users','is_admin');
   },
 }
