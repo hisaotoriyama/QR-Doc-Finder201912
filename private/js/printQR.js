@@ -24,7 +24,7 @@ var app = new Vue({
         $('#qrprint').html("");
         $('#qrprint').qrcode({ width: 90, height: 90, text: JSON.stringify(this.textqr)});
         console.log(this.getParam('dorp'));
-        if(this.getParam('dorp')="p"){
+        if(this.getParam('dorp')=="p"){
             this.display=false;
         }else{
             this.display=true
