@@ -99,15 +99,16 @@ var app = new Vue({
         },
 
         modify: function () {
-            if (this.modifiedselectedplaceId == "" || this.modifiedselecteduserId == "") return;
+            if (this.modifiedselectedplaceId == "") return;
             alert("更新開始")
+            this.modifiedselecteduserId = Number(Cookies.get('user_id'))
             // //trueのtransactionIdを取り出して、引数化して、次の画面遷移にする。
             var sil = this.storeditemlists.filter((e) => {
                 return e.check == true
             })
             // console.log(sil);
             this.selectedstoreditemlists = sil;
-            console.log(this.selectedstoreditemlists.length)
+            // console.log(this.selectedstoreditemlists.length)
             let self = this;
             let changestoreditem = function () {
                 for (i = 0; i < self.selectedstoreditemlists.length; i++) {
