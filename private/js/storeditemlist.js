@@ -331,10 +331,10 @@ var app = new Vue({
     },
 
     created: function () {
-        return this.readusers();
+        this.readusers();
+        this.readplaces();
     },
     mounted: function () {
-        return this.readplaces();
     },
 
     computed: function () {
