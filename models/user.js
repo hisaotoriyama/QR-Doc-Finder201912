@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     name: DataTypes.STRING,
     password: DataTypes.STRING,
-    isAdmin: DataTypes.BOOLEAN
+    is_admin: DataTypes.BOOLEAN
 
   }, {
     underscored: true,
