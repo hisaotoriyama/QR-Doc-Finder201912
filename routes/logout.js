@@ -6,8 +6,9 @@ let db = require('../models/index')
 router.get('/', (req,res)=>{
     console.log("session 完了")
     // res.cookie("login")
-    req.session.name=""
-    req.session.password=""
+    req.session.name="";
+    req.session.password="";
+    req.session.user_id = "";
     res.redirect("/login.html")
 })
 

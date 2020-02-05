@@ -139,7 +139,7 @@ var app = new Vue({
                 body: JSON.stringify(data)
             };
             var self = this;
-            fetch('/storeditems/'+v.id, d)
+            fetch('/storeditems/' + v.id, d)
                 .then((e) => {
                     e.json().then((j) => {
                         alert("更新完了")
@@ -325,9 +325,22 @@ var app = new Vue({
 
             this.firstregisteruserId = Number(Cookies.get('user_id'))
             return this.readusername(this.firstregisteruserId)
-        }
-
-
+        },
+        logout:function(){
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "GET"
+            };
+            fetch('/logout', d)
+                .then((e) => {
+                    e.json().then(() => {
+                    })
+                });
+        },
     },
 
     created: function () {

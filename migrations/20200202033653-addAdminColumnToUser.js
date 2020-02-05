@@ -9,6 +9,7 @@ module.exports = {
       after: 'password'
     });
   },
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn('users','is_admin');
   },

@@ -78,19 +78,16 @@
         </tr>
 
         <tr>
-          <!-- <td><button type="button" class="btn btn-outline-primary" v-on:click="contentdelete" >Delete</button></td> -->
-          <!-- <td><input type="text" class="form-control" ></td> -->
-          <!-- <td><input type="text" class="form-control" v-model="idtobedeleted"></td> -->
+          <!-- <td><button type="button" v-on:click="contentdelete" > -->
+            <td><button type="button" class="btn btn-outline-primary" >Delete</button></td>
+          <td><input type="text" class="form-control" v-model="idtobedeleted"></td>
         </tr>
-
-
       </table>
 
-
-      <table class="table table table-striped ml-5 mt-5">
-        <td>LogOut</td>
-        <td><button type="button" class="btn btn-outline-primary" href="/logout">Logout</button></td>
-      </table>
+      <!-- <table class="table table table-striped ml-5 mt-5"> -->
+      <!-- <td>LogOut</td> -->
+      <!-- <td><button type="button" class="btn btn-outline-primary" v-on:click="logout">Logout</button></td> -->
+      <!-- </table> -->
 
       <pre>{{$data}}</pre>
 
