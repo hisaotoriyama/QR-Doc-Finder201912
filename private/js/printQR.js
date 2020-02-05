@@ -27,7 +27,7 @@ var app = new Vue({
         if(this.getParam('dorp')=="p"){
             this.display=false;
         }else{
-            this.display=true
+            this.display=true;
         }
 
       },
