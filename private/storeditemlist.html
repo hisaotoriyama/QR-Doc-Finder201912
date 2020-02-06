@@ -101,16 +101,14 @@
                         <td></td>
                         <td></td>
 
-                        <td>
+                        <!-- <td>
                             <select v-model="modifiedselecteduserId">
                                 <option v-for="eachuser in allusers" v-bind:value="eachuser.id">
                                     {{ eachuser.name }}
                                 </option>
                             </select>
                             <span>Selected: {{ modifiedselecteduserId }}</span>
-                        </td>
-                        <td></td>
-
+                        </td> -->
                     </tr>
 
                 </tbody>
@@ -118,7 +116,7 @@
             </table>
             <table class="table table table-striped ml-5 mt-5">
                     <td>LogOut</td>
-                    <td><button type="button" class="btn btn-outline-primary" v-on:click="logout">Logout</button></td>
+                    <td><button type="button" class="btn btn-outline-primary" >Logout</button></td>
                 </table>
         </div>
         <pre>{{$data}}</pre>

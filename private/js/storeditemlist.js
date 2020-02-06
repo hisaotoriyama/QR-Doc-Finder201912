@@ -326,22 +326,9 @@ var app = new Vue({
             this.firstregisteruserId = Number(Cookies.get('user_id'))
             return this.readusername(this.firstregisteruserId)
         },
-        logout:function(){
-            const headers = {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            };
-            const d = {
-                headers: headers,
-                method: "GET"
-            };
-            fetch('/logout', d)
-                .then((e) => {
-                    e.json().then(() => {
-                    })
-                });
-        },
+        
     },
+
 
     created: function () {
         this.readusers();

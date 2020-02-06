@@ -63,6 +63,23 @@ var app = new Vue({
           })
         })
     },
+    
+    logout:function(){
+      alert("logout Movement")
+      const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      };
+      const d = {
+          headers: headers,
+          method: "GET"
+      };
+      fetch('/logout', d)
+          .then((e) => {
+              e.json().then(() => {
+              })
+          });
+  },
 
     movetouseradmin: function () {
       location.href = "./adminuser.html"
@@ -93,6 +110,24 @@ var app = new Vue({
   }
   },
 
+  created: function () {
+    const headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    const d = {
+      headers: headers,
+      method: "GET"
+    };
+    var self = this;
+    fetch('/contentgroups', d)
+      .then((e) => {
+        e.json().then((j) => {
+          console.log(j);
+          self.allcontentgroups = j;
+        })
+      })
+  },
   created: function () {
     const headers = {
       'Accept': 'application/json',
