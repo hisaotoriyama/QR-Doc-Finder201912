@@ -52,8 +52,20 @@ let sessionCheck = (req, res, next) => {
       res.redirect('/login.html')
   }
 }
+// こちらを使う
+let adminCheck = (req, res, next) => {
+  if(req.session.name !== undefined) {
+    if(req.session.admin == true) {
+      next();
+    }
+  } else {
+      res.redirect('/login.html')
+  }
+}
+
 app.use('/', express.static(path.join( __dirname, '/public')));
 app.use('/private', sessionCheck, express.static(path.join( __dirname, '/private' )) );
+app.use('/admin', adminCheck, express.static(path.join( __dirname, '/admin' )) );
 
 // start application
 var https = require('https');

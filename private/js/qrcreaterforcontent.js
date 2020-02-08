@@ -66,6 +66,7 @@ var app = new Vue({
     
     logout:function(){
       alert("logout Movement")
+      /*
       const headers = {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -79,6 +80,9 @@ var app = new Vue({
               e.json().then(() => {
               })
           });
+          */
+      //document.location = "/logout";
+      location.href = "/logout"
   },
 
     movetouseradmin: function () {

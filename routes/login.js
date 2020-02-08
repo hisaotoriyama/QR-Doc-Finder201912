@@ -15,6 +15,7 @@ router.post('/', (req, res) => {
             req.session.name = req.body.loginName
             req.session.password = req.body.loginPassword
             req.session.user_id = d.id
+            req.session.admin = d.is_admin
             res.json({ id: d.id, name: req.body.loginName, password: d.password })
 
         } else {

@@ -6,7 +6,7 @@ let db = require('../models/index')
 router.get('/', (req,res)=>{
     console.log("session 完了")
     req.session.destroy();
-    res.redirect("../public/login.html")
+    res.redirect("/login.html")
 })
   
 module.exports = router;
