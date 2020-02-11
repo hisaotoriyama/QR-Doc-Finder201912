@@ -58,11 +58,15 @@ let adminCheck = (req, res, next) => {
     if(req.session.admin == true) {
       next();
     }
-  } else {
+   else {
       res.redirect('/login.html')
   }
 }
+}
 
+
+// pathはpath示すもの。joinは合わせるもの。つまりpath.join( __dirname, '/public'))は、( __dirname+'/public'))となる
+// __dirnamはこのプログラムのベース「qr-document-finder」にある。つまりqr-document-finder/publicとなる。
 app.use('/', express.static(path.join( __dirname, '/public')));
 app.use('/private', sessionCheck, express.static(path.join( __dirname, '/private' )) );
 app.use('/admin', adminCheck, express.static(path.join( __dirname, '/admin' )) );

@@ -46,31 +46,31 @@ var app = new Vue({
     },
   
     movetouseradmin: function () {
-        location.href = "./adminuser.html"
-    },
-    movetoplaceadmin: function () {
-        location.href = "./adminplace.html"
-    },
-    movetocontentsgroupadmin: function () {
-        location.href = "./admincontentgroup.html"
-    },
-    movetoqrcontent: function () {
-        location.href = "./qrcreaterforcontent.html"
-    },
-    movetostoreditem: function () {
-        location.href = "./storeditemlist.html"
-    },
-    // movetostoreditemcreate: function () {
-    //     location.href = "./storeditemlist.html"
-    // },
-    // movetostoreditemupdate: function () {
-    //     location.href = "./storeditemlist.html"
-    // },
-    movetoprintqr: function () {
-        location.href = "./printQR.html"
-    }, 
-    movetoqrreader: function () {
-        location.href = "./qrreader.html"
+        location.href = "/admin/adminuser.html"
+      },
+      movetoplaceadmin: function () {
+        location.href = "/admin/adminplace.html"
+      },
+      movetocontentsgroupadmin: function () {
+        location.href = "/admin/admincontentgroup.html"
+      },
+      movetoqrcontent: function () {
+        location.href = "/private/qrcreaterforcontent.html"
+      },
+      movetostoreditem: function () {
+        location.href = "/private/storeditemlist.html"
+      },
+      // movetostoreditemcreate: function () {
+      //   location.href = "./storeditemlist.html"
+      // },
+      // movetostoreditemupdate: function () {
+      //   location.href = "./storeditemlist.html"
+      // },
+      movetoprintqr: function () {
+        location.href = "/private/printQR.html"
+      },
+       movetoqrreader: function () {
+        location.href = "/private/qrreader.html"
     }
     },
 

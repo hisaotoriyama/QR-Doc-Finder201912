@@ -82,19 +82,19 @@ var app = new Vue({
     },
 
     movetouseradmin: function () {
-      location.href = "./adminuser.html"
+      location.href = "/admin/adminuser.html"
     },
     movetoplaceadmin: function () {
-      location.href = "./adminplace.html"
+      location.href = "/admin/adminplace.html"
     },
     movetocontentsgroupadmin: function () {
-      location.href = "./admincontentgroup.html"
+      location.href = "/admin/admincontentgroup.html"
     },
     movetoqrcontent: function () {
-      location.href = "./qrcreaterforcontent.html"
+      location.href = "/private/qrcreaterforcontent.html"
     },
     movetostoreditem: function () {
-      location.href = "./storeditemlist.html"
+      location.href = "/private/storeditemlist.html"
     },
     // movetostoreditemcreate: function () {
     //   location.href = "./storeditemlist.html"
@@ -103,10 +103,10 @@ var app = new Vue({
     //   location.href = "./storeditemlist.html"
     // },
     movetoprintqr: function () {
-      location.href = "./printQR.html"
+      location.href = "/private/printQR.html"
     },
     movetoqrreader: function () {
-      location.href = "./qrreader.html"
+      location.href = "/private/qrreader.html"
     }
 
 

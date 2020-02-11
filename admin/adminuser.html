@@ -39,12 +39,20 @@
         <th>ID</th>
         <th>Name</th>
         <th>Password</th>
+        <th>Admin</th>
 
         <tr>
           <td><button type="button" class="btn btn-outline-primary" v-on:click="userregister">Register</button></td>
           <td>Auto Id</td>
           <td><input type="text" class="form-control" v-model="newname"></td>
           <td><input type="text" class="form-control" v-model="newpassword"></td>
+          <td>
+            <select class="form-control" v-model="isadminset">
+              <option value=true>Admin</option>
+              <option value=false>User</option>
+            </select>
+            <span>Selected: {{ isadminset }}</span>
+          </td>
         </tr>
 
         <tr>
@@ -55,6 +63,7 @@
           <th>{{user.id}}</th>
           <th>{{user.name}}</th>
           <th>{{user.password}}</th>
+          <th>{{user.is_admin}}</th>
         </tr>
 
         <tr>
@@ -67,18 +76,13 @@
 
       </table>
 
-      <table class="table table table-striped ml-5 mt-5">
+      <!-- やはりdelete入れるとReadAllが読めなくなる -->
+      <!-- <table class="table table table-striped ml-5 mt-5">
         <td>LogOut</td>
         <td><button type="button" class="btn btn-outline-primary" v-on:click="logout">Logout</button></td>
-      </table>
+      </table> -->
+      
       <pre>{{$data.users}}</pre>
-
-
-
-    </div>
-
-    <div class="row">
-      <div id="qrprint" class="ml-5 mt-5"></div>
     </div>
 
   </div>

@@ -3,6 +3,7 @@ var app = new Vue({
   data: {
     newname: "",
     newpassword: "",
+    isadminset:"",
     modifiedid: "",
     modifiedname: "",
     modifiedpassword: "",
@@ -12,10 +13,12 @@ var app = new Vue({
 
   methods: {
     userregister: function () {
+      alert("いくぜ登録")
       if (this.newname == "") return;
       const data = {
         "newname": this.newname,
-        "newpassword": this.newpassword
+        "newpassword": this.newpassword,
+        "isadminset": this.isadminset
       };
       const headers = {
         'Accept': 'application/json',
@@ -26,17 +29,15 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
+      alert("続いていくぜ登録")
       var self = this;
       fetch('/users', d)
         .then((e) => {
           e.json().then((j) => {
-            self.qrcreation(j)
-          })
-        }).then((k) => {
+            console.log(j)
           self.readall();
         })
-        ;
-      ;
+      })
       this.newname = "";
       this.newpassword = "";
     },
@@ -69,6 +70,7 @@ var app = new Vue({
     },
 
     readall: function () {
+      alert("読むぜ全て")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -80,24 +82,25 @@ var app = new Vue({
       var self = this;
       fetch('/users', d).then((e) => {
         e.json().then((j) => {
+          console.log(j)
           self.users = j;
         })
       })
     },
     movetouseradmin:function(){
-      location.href = "./adminuser.html"
+      location.href = "/admin/adminuser.html"
     },
     movetoplaceadmin:function(){
-      location.href = "./adminplace.html"
+      location.href = "/admin/adminplace.html"
     },
     movetocontentsgroupadmin:function(){
-      location.href = "./admincontentgroup.html"
+      location.href = "/admin/admincontentgroup.html"
     },
     movetoqrcontent:function(){
-      location.href = "./qrcreaterforcontent.html"
+      location.href = "/private/qrcreaterforcontent.html"
     },
     movetostoreditem:function(){
-      location.href = "./storeditemlist.html"
+      location.href = "/private/storeditemlist.html"
     },
     // movetostoreditemcreate:function(){
     //   location.href = "./storeditemlist.html"
@@ -106,10 +109,10 @@ var app = new Vue({
     //   location.href = "./storeditemlist.html"
     // },
     movetoprintqr:function(){
-      location.href = "./printQR.html"
+      location.href = "/private/printQR.html"
     },
     movetoqrreader: function () {
-      location.href = "./qrreader.html"
+      location.href = "/private/qrreader.html"
   }
   }
 })

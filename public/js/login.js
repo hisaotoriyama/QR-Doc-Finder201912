@@ -24,8 +24,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));
@@ -33,7 +33,8 @@ var app = new Vue({
           Cookies.set("user_id", j.id)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "/private/adminuser.html"
+          alert("Admin 専用画面")
+          location.href = "/admin/adminuser.html"
         })
       })
     },
@@ -54,8 +55,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));
@@ -63,7 +64,8 @@ var app = new Vue({
           Cookies.set("user_id", j.id)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "/private/adminplace.html"
+          alert("Admin 専用画面")
+          location.href = "/admin/adminplace.html"
         })
       })
 
@@ -84,8 +86,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));
@@ -93,7 +95,8 @@ var app = new Vue({
           Cookies.set("user_id", j.id)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-          location.href = "/private/admincontentgroup.html"
+          alert("Admin 専用画面")
+          location.href = "/admin/admincontentgroup.html"
         })
       })
     },
@@ -113,8 +116,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));
@@ -143,8 +146,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));
@@ -156,66 +159,6 @@ var app = new Vue({
         })
       })
     },
-
-    //6
-    // movetostoreditemcreate: function () {
-    //   if (this.loginName == "") return;
-    //   const data = {
-    //     "loginName": this.loginName,
-    //     "loginPassword": this.loginPassword
-    //   };
-    //   const headers = {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   };
-    //   const d = {
-    //     headers: headers,
-    //     method: "POST",
-    //     body: JSON.stringify(data)
-    //   };
-    //   //ok
-    //   fetch('../login', d).then((e) => {
-    //     e.json().then((j) => {
-    //       console.log(j)
-    //       // console.log(JSON.parse(j));
-    //       Cookies.set("name", j.name);
-    //       Cookies.set("user_id", j.id)
-    //       //その上で、location.href処理しsecureに移る。
-    //       //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-    //       location.href = "/private/storeditemlist.html"
-    //     })
-    //   })
-    // },
-
-    // //7
-    // movetostoreditemupdate: function () {
-    //   if (this.loginName == "") return;
-    //   const data = {
-    //     "loginName": this.loginName,
-    //     "loginPassword": this.loginPassword
-    //   };
-    //   const headers = {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   };
-    //   const d = {
-    //     headers: headers,
-    //     method: "POST",
-    //     body: JSON.stringify(data)
-    //   };
-    //   //ok
-    //   fetch('../login', d).then((e) => {
-    //     e.json().then((j) => {
-    //       console.log(j)
-    //       // console.log(JSON.parse(j));
-    //       Cookies.set("name", j.name);
-    //       Cookies.set("user_id", j.id)
-    //       //その上で、location.href処理しsecureに移る。
-    //       //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
-    //       location.href = "/private/storeditemlist.html"
-    //     })
-    //   })
-    // },
     // 8
     movetoprintqr: function () {
       if (this.loginName == "") return;
@@ -261,7 +204,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         //confirmed on Dec.20,2019
         e.json().then((j) => {
           console.log(j)
@@ -290,8 +234,8 @@ var app = new Vue({
         method: "POST",
         body: JSON.stringify(data)
       };
-      //ok
-      fetch('../login', d).then((e) => {
+      //fetchを/loginとした。../loginという相対パスではなく。
+      fetch('/login', d).then((e) => {
         e.json().then((j) => {
           console.log(j)
           // console.log(JSON.parse(j));

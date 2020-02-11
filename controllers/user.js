@@ -12,7 +12,8 @@ module.exports = {
           return {
             id: p.id,
             name: p.name,
-            password: p.password
+            password: p.password,
+            is_admin: p.is_admin
           }
         })
         res.json(data)
@@ -39,15 +40,18 @@ module.exports = {
   create: (req, res) => {
     let data = {
       name: req.body.newname,
-      password: req.body.newpassword
+      password: req.body.newpassword,
+      is_admin:req.body.isadminset
     }
     db.user.create(data).then((p) => {
       res.json({
         id: p.id,
         name: p.name,
-        password: p.password
+        password: p.password,
+        is_admin: p.is_admin
       })
     })
+    // .then(console.log(p))
   },
 
   update: (req, res) => {
