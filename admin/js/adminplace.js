@@ -78,14 +78,26 @@ var app = new Vue({
         })
     },
 
-    movetouseradmin:function(){
+    movetouseradmin: function () {
+      if(Cookies.get('is_admin') === "true") {
       location.href = "/admin/adminuser.html"
+    }else{
+      alert("Admin not allowed")
+      }
     },
-    movetoplaceadmin:function(){
+    movetoplaceadmin: function () {
+      if(Cookies.get('is_admin') === "true") {
       location.href = "/admin/adminplace.html"
+    }else{
+      alert("Admin not allowed")
+      }
     },
-    movetocontentsgroupadmin:function(){
+    movetocontentsgroupadmin: function () {
+      if(Cookies.get('is_admin') === "true") {
       location.href = "/admin/admincontentgroup.html"
+    }else{
+      alert("Admin not allowed")
+      }
     },
     movetoqrcontent:function(){
       location.href = "/private/qrcreaterforcontent.html"

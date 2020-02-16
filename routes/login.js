@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             req.session.password = req.body.loginPassword
             req.session.user_id = d.id
             req.session.admin = d.is_admin
-            res.json({ id: d.id, name: req.body.loginName, password: d.password })
+            res.json({ id: d.id, name: req.body.loginName, password: d.password,is_admin: d.is_admin })
 
         } else {
             res.send(200)

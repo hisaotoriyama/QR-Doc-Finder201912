@@ -7,7 +7,6 @@ var app = new Vue({
   },
 
   methods: {
-
     // 1
     movetouseradmin: function () {
       if (this.loginName == "") return;
@@ -30,7 +29,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           alert("Admin 専用画面")
@@ -61,7 +61,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           alert("Admin 専用画面")
@@ -92,7 +93,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           alert("Admin 専用画面")
@@ -122,7 +124,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/qrcreaterforcontent.html"
@@ -152,7 +155,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/storeditemlist.html"
@@ -181,7 +185,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/printQR.html"
@@ -211,7 +216,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
           location.href = "/private/qrreader.html"
@@ -240,7 +246,8 @@ var app = new Vue({
           console.log(j)
           // console.log(JSON.parse(j));
           Cookies.set("name", j.name);
-          Cookies.set("user_id", j.id)
+          Cookies.set("user_id", j.id);
+          Cookies.set("is_admin",j.is_admin)
           //その上で、location.href処理しsecureに移る。
           //ブラウザベースのJSの場合、location.href使う。一方サーバーベースのNode、Rails使う場合、redirectを使う。
         })
