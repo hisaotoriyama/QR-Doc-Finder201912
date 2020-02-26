@@ -4,11 +4,11 @@ var app = new Vue({
         dqrnumber: "",
         globalData: globalData,
         document_id: "",
-        storageplace:"",
-        Id:"",
+        storageplace: "",
+        Id: "",
     },
     computed: {
-        qrdata: function() {
+        qrdata: function () {
             console.log(this.globalData.QRdata)  /// replace process
             return this.globalData.QRdata
         }
@@ -24,37 +24,42 @@ var app = new Vue({
             switch (j.dorp) {
                 case 'd':
                     this.document_id = j.id
-                break;
+                    break;
 
                 case 'p':
                     this.storageplace = j.id
-                break;
+                    break;
             }
         },
-        dataexport:function(){
+        dataexport: function () {
             alert("list変更するよ")
-            console.log( Cookies.get('user_id'))
+            console.log(Cookies.get('user_id'))
             const data = {
-                    "latestuser": Cookies.get('user_id'),
-                    "storageplace": this.storageplace,
-                };
-                const headers = {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                };
-                const d = {
-                    headers: headers,
-                    method: "PUT",
-                    body: JSON.stringify(data)
-                };
+                "latestuser": Cookies.get('user_id'),
+                "storageplace": this.storageplace,
+            };
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            };
+            const d = {
+                headers: headers,
+                method: "PUT",
+                body: JSON.stringify(data)
+            };
 
-                fetch('../storeditems/' + this.document_id, d)
-                    .then((res) => {
-                        res.json().then((f) => {
-                            // ここから開始20191202 12PM PUTして戻ってくるところ。修正されるはず。
-                            console.log(f)
-                            alert("Success")
-                        })
-            })
-        }}
-    })
+            fetch('../storeditems/' + this.document_id, d)
+                .then((res) => {
+                    res.json().then((f) => {
+                        // ここから開始20191202 12PM PUTして戻ってくるところ。修正されるはず。
+                        console.log(f)
+                        alert("Success")
+                    })
+                })
+        },
+        logout: function () {
+            alert("logout Movement")
+            location.href = "/logout"
+        },
+    }
+})

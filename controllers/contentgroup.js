@@ -57,7 +57,15 @@ module.exports = {
         })
     },
 
-    delete: (req, res) => {
-        res.send("destroy forum " + req.params.forum);
-    }
+    destroy: (req, res) => {
+        db.contentgroup.destroy({
+            where: {
+                id: req.params.id
+            }
+        }
+        )
+            .then(() => {
+                res.send(200)
+            })
+    },
 }

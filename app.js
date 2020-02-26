@@ -59,7 +59,8 @@ let adminCheck = (req, res, next) => {
       next();
     }
    else {
-      res.redirect('/login.html')
+    res.status(204).send()
+      // res.redirect('/login.html')
   }
 }
 }

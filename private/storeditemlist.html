@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Stored Item List</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
@@ -111,12 +111,18 @@
                         </td> -->
                     </tr>
 
+        <tr>
+            <td><button type="button" class="btn btn-outline-primary" v-on:click="storeditemdelete">Delete</button>
+            </td>
+            <td><input type="text" class="form-control" v-model="deletedid"></td>
+          </tr>
+
                 </tbody>
 
             </table>
             <table class="table table table-striped ml-5 mt-5">
                     <td>LogOut</td>
-                    <td><button type="button" class="btn btn-outline-primary" >Logout</button></td>
+                    <td><button type="button" class="btn btn-outline-primary" v-on:click="logout">Logout</button></td>
                 </table>
         </div>
         <pre>{{$data}}</pre>

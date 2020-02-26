@@ -4,10 +4,25 @@ var app = new Vue({
     newcontentgroup: "",
     allcontentgroups: "",
     modifiedname: "",
-    modifiedid: ""
+    modifiedid: "",
+    is_admin: true,
+    deletedid:""
+  },
+
+  created: function () {
+    return this.isadmincheck()
   },
 
   methods: {
+    isadmincheck: function () {
+      if (Cookies.get('is_admin') === "true") {
+        this.is_admin = true
+      } else {
+        this.is_admin = false
+      }
+
+
+    },
     contentgroupregister: function () {
       // if (this.newName == "") return;
       const data = {
@@ -82,24 +97,24 @@ var app = new Vue({
     },
 
     movetouseradmin: function () {
-      if(Cookies.get('is_admin') === "true") {
-      location.href = "/admin/adminuser.html"
-    }else{
-      alert("Admin not allowed")
+      if (Cookies.get('is_admin') === "true") {
+        location.href = "/admin/adminuser.html"
+      } else {
+        alert("Admin not allowed")
       }
     },
     movetoplaceadmin: function () {
-      if(Cookies.get('is_admin') === "true") {
-      location.href = "/admin/adminplace.html"
-    }else{
-      alert("Admin not allowed")
+      if (Cookies.get('is_admin') === "true") {
+        location.href = "/admin/adminplace.html"
+      } else {
+        alert("Admin not allowed")
       }
     },
     movetocontentsgroupadmin: function () {
-      if(Cookies.get('is_admin') === "true") {
-      location.href = "/admin/admincontentgroup.html"
-    }else{
-      alert("Admin not allowed")
+      if (Cookies.get('is_admin') === "true") {
+        location.href = "/admin/admincontentgroup.html"
+      } else {
+        alert("Admin not allowed")
       }
     },
     movetoqrcontent: function () {
@@ -119,8 +134,30 @@ var app = new Vue({
     },
     movetoqrreader: function () {
       location.href = "/private/qrreader.html"
-    }
+    },
 
+    logout: function () {
+      alert("logout Movement")
+      location.href = "/logout"
+    },
+
+    contentgroupdelete: function () {
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "DELETE",
+      };
+      var self = this;
+      return fetch('/contentgroups/' + this.deletedid, d)
+        .then(() => {
+            self.readall();
+            self.deletedid = ""
+          })
+        
+    },
 
   }
 })

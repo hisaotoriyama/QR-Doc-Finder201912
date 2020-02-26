@@ -58,7 +58,8 @@ var app = new Vue({
         documentId: "",
         registedstoreditemId: "",
         modifiedselectedplaceId: "",
-        modifiedselecteduserId: ""
+        modifiedselecteduserId: "",
+        deletedid:""
     },
 
     methods: {
@@ -251,31 +252,31 @@ var app = new Vue({
 
         movetouseradmin: function () {
             location.href = "/admin/adminuser.html"
-          },
-          movetoplaceadmin: function () {
+        },
+        movetoplaceadmin: function () {
             location.href = "/admin/adminplace.html"
-          },
-          movetocontentsgroupadmin: function () {
+        },
+        movetocontentsgroupadmin: function () {
             location.href = "/admin/admincontentgroup.html"
-          },
-          movetoqrcontent: function () {
+        },
+        movetoqrcontent: function () {
             location.href = "/private/qrcreaterforcontent.html"
-          },
-          movetostoreditem: function () {
+        },
+        movetostoreditem: function () {
             location.href = "/private/storeditemlist.html"
-          },
-          // movetostoreditemcreate: function () {
-          //   location.href = "./storeditemlist.html"
-          // },
-          // movetostoreditemupdate: function () {
-          //   location.href = "./storeditemlist.html"
-          // },
-          movetoprintqr: function () {
+        },
+        // movetostoreditemcreate: function () {
+        //   location.href = "./storeditemlist.html"
+        // },
+        // movetostoreditemupdate: function () {
+        //   location.href = "./storeditemlist.html"
+        // },
+        movetoprintqr: function () {
             location.href = "/private/printQR.html"
-          },
-           movetoqrreader: function () {
+        },
+        movetoqrreader: function () {
             location.href = "/private/qrreader.html"
-        
+
         },
         readplaces: function () {
             const headers = {
@@ -326,7 +327,31 @@ var app = new Vue({
             this.firstregisteruserId = Number(Cookies.get('user_id'))
             return this.readusername(this.firstregisteruserId)
         },
-        
+        logout: function () {
+            alert("logout Movement")
+            location.href = "/logout"
+        },
+
+        storeditemdelete: function () {
+            alert("delete storeditem")
+            const headers = {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            };
+            const d = {
+              headers: headers,
+              method: "DELETE",
+            };
+            var self = this;
+            return fetch('/storeditems/' + this.deletedid, d)
+              .then(() => {
+                  self.readall();
+                  self.deletedid = ""
+                })
+              
+          },
+      
+
     },
 
 
@@ -337,9 +362,11 @@ var app = new Vue({
     mounted: function () {
     },
 
-    computed: function () {
-        return this.updatelist()
-    }
+
+    //computedはreturnが必要。
+    // computed: function () {
+    //     return this.updatelist()
+    // }
 
     // registeruserId: function () {
     //     let self = this

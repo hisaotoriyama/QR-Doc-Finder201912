@@ -85,7 +85,15 @@ module.exports = {
         })
     },
 
-    delete: (req, res) => {
-        res.send("destroy forum " + req.params.forum);
-    }
+    destroy: (req, res) => {
+        db.storeditem.destroy({
+            where: {
+                id: Number(req.params.id)
+            }
+        }
+        )
+            .then(() => {
+                res.send(200)
+            })
+    },
 }

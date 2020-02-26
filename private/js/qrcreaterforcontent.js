@@ -2,7 +2,7 @@ var app = new Vue({
   el: "#app",
   data: {
     newcontent: "",
-    selectedId:"",
+    selectedId: "",
     allcontents: "",
     allcontentgroups: "",
     eachontentgroup: {
@@ -10,6 +10,7 @@ var app = new Vue({
       name: ""
     },
     newstoreditemid: "",
+    deletedid: ""
   },
 
   methods: {
@@ -63,8 +64,8 @@ var app = new Vue({
           })
         })
     },
-    
-    logout:function(){
+
+    logout: function () {
       alert("logout Movement")
       /*
       const headers = {
@@ -83,7 +84,7 @@ var app = new Vue({
           */
       //document.location = "/logout";
       location.href = "/logout"
-  },
+    },
 
     movetouseradmin: function () {
       location.href = "/admin/adminuser.html"
@@ -109,9 +110,12 @@ var app = new Vue({
     movetoprintqr: function () {
       location.href = "/private/printQR.html"
     },
-     movetoqrreader: function () {
+    movetoqrreader: function () {
       location.href = "/private/qrreader.html"
-  }
+    },
+    contentdelete: function () {
+
+    }
   },
 
   created: function () {
