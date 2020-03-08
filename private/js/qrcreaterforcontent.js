@@ -10,7 +10,8 @@ var app = new Vue({
       name: ""
     },
     newstoreditemid: "",
-    deletedid: ""
+    deletedid: "",
+    deletedstoreditemid:""
   },
 
   methods: {
@@ -48,6 +49,7 @@ var app = new Vue({
     },
 
     readall: function () {
+      alert("Readall")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -113,9 +115,119 @@ var app = new Vue({
     movetoqrreader: function () {
       location.href = "/private/qrreader.html"
     },
+
     contentdelete: function () {
+      alert("delete contents")
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "GET"
+      };
+      var self = this;
+      fetch('/contents/'+ this.deletedid, d)
+        .then((e) => {
+          alert('ikuze')
+          e.json().then((j) => {
+            console.log(j.storeditemid);
+            self.deletedstoreditemid = j.storeditemid;
+          })
+        }).then(this.nullinput())
+      },
+      
+      nullinput: function() {
+      const data = {
+          storeditemid: null
+      };
+      const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      };
+      const d = {
+          headers: headers,
+          method: "PUT",
+          body: JSON.stringify(data)
+      };
+      var self = this;
+      fetch('/contents/' + this.deletedid, d)
+          .then((e) => {
+              e.json().then((j) => {
+              })
+          })
+      },
+      
+      deletestoreditem: function(){
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "DELETE",
+      };
+      var self = this;
+      return fetch('/storeditems/' + this.deletedstoreditemid, d)
+        .then(() => {
+          })
+    },
 
-    }
+    // storeditemdelete: function () {
+    //   alert("delete storeditem")
+    //   const headers = {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   };
+    //   const d = {
+    //     headers: headers,
+    //     method: "DELETE",
+    //   };
+    //   var self = this;
+    //   return fetch('/storeditems/' + this.deletedid, d)
+    //     .then(() => {
+    //         self.readall();
+    //         self.deletedid = ""
+    //       })
+        
+    // },
+    // contentdelete: function () {
+
+      
+
+    //   ;
+    //   const data = {
+    //     storeditemid: null
+    // };
+    // const headers = {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    // };
+    // const d = {
+    //     headers: headers,
+    //     method: "PUT",
+    //     body: JSON.stringify(data)
+    // };
+    // var self = this;
+    // fetch('/storeditems/' + this.deletedstoreditemid, d)
+    //     .then((e) => {
+    //         e.json().then((j) => {
+    //             // location.href = "./printQR.html?dorp=p&id=" + j.id + "&name=" + j.name
+    //         })
+    //     }).then((k) => {
+    //         // self.readall();
+    //     })
+    //     ;
+    // ;
+
+    //   // まず対象のcontentsからstoreditemidを取り出し、dataして格納し、
+    //   // まずcontentsのsroteditemidをnull、その上で上のstoreditemidを使って
+    //   // 次に、storeditemのdocumentをNULLにする。
+    //   // そしてRelationを切る。
+    //   // その上でDeleteする。
+
+
+    // }
   },
 
   created: function () {
@@ -136,23 +248,23 @@ var app = new Vue({
         })
       })
   },
-  created: function () {
-    const headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    };
-    const d = {
-      headers: headers,
-      method: "GET"
-    };
-    var self = this;
-    fetch('/contentgroups', d)
-      .then((e) => {
-        e.json().then((j) => {
-          console.log(j);
-          self.allcontentgroups = j;
-        })
-      })
-  },
+  // created: function () {
+  //   const headers = {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   };
+  //   const d = {
+  //     headers: headers,
+  //     method: "GET"
+  //   };
+  //   var self = this;
+  //   fetch('/contentgroups', d)
+  //     .then((e) => {
+  //       e.json().then((j) => {
+  //         console.log(j);
+  //         self.allcontentgroups = j;
+  //       })
+  //     })
+  // },
 
 })
