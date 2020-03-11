@@ -51,6 +51,10 @@ module.exports = {
 
     show: (req, res) => {        
         db.content.findAll({
+            include: [
+                {
+                    model: db.contentgroup
+                }],
             where:
             {
                 id: Number(req.params.id)
@@ -75,9 +79,9 @@ module.exports = {
         res.send("edit forum " + req.params.forum);
     },
     update: (req, res) => {
-        console.log(req.body)
-        console.log(req.params)
-        db.content.update(req.body, {
+        db.content.update({
+            storeditemid:req.body.storeditemid
+        }, {
             where:
             {
                 id: Number(req.params.id)

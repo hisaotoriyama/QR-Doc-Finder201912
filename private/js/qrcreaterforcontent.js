@@ -129,15 +129,20 @@ var app = new Vue({
       var self = this;
       fetch('/contents/'+ this.deletedid, d)
         .then((e) => {
-          alert('ikuze')
           e.json().then((j) => {
-            console.log(j.storeditemid);
-            self.deletedstoreditemid = j.storeditemid;
+            console.log(j);
+            console.log(j[0].storeditemid);
+            //この[0]がみそ。戻るjは結果的に一つしかないObjectであるが、[0]で指定しないと抽出できない。20200311。
+            self.deletedstoreditemid = j[0].storeditemid;
           })
-        }).then(this.nullinput())
+        })
+        .then(this.nullinput())
+        .then(this.deletestoreditem())
+        .then(this.deletecontent())
       },
       
       nullinput: function() {
+        console.log("nullinputすすむ")
       const data = {
           storeditemid: null
       };
@@ -151,7 +156,7 @@ var app = new Vue({
           body: JSON.stringify(data)
       };
       var self = this;
-      fetch('/contents/' + this.deletedid, d)
+      return fetch('/contents/' + this.deletedid, d)
           .then((e) => {
               e.json().then((j) => {
               })
@@ -159,6 +164,7 @@ var app = new Vue({
       },
       
       deletestoreditem: function(){
+        console.log("deletestreditemすすむ")
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -168,8 +174,24 @@ var app = new Vue({
         method: "DELETE",
       };
       var self = this;
-      return fetch('/storeditems/' + this.deletedstoreditemid, d)
-        .then(() => {
+      return fetch('/contents/' + this.deletedstoreditemid, d)
+        .then((e) => {
+          e.json()
+          })
+    },
+    deletecontent: function(){
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "DELETE",
+      };
+      var self = this;
+      return fetch('/storeditems/' + this.deletedid, d)
+        .then((e) => {
+          e.json()
           })
     },
 
@@ -243,7 +265,6 @@ var app = new Vue({
     fetch('/contentgroups', d)
       .then((e) => {
         e.json().then((j) => {
-          console.log(j);
           self.allcontentgroups = j;
         })
       })

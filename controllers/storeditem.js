@@ -86,6 +86,7 @@ module.exports = {
     },
 
     destroy: (req, res) => {
+        console.log(req.params.id)
         db.storeditem.destroy({
             where: {
                 id: Number(req.params.id)
