@@ -95,6 +95,7 @@ module.exports = {
     },
 
     destroy: (req, res) => {
+        console.log("deletedstoreditemid=" + req.params.id)
         db.content.destroy({
             where: {
                 id: Number(req.params.id)

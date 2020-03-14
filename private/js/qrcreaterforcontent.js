@@ -11,7 +11,7 @@ var app = new Vue({
     },
     newstoreditemid: "",
     deletedid: "",
-    deletedstoreditemid:""
+    deletedstoreditemid: ""
   },
 
   methods: {
@@ -127,7 +127,7 @@ var app = new Vue({
         method: "GET"
       };
       var self = this;
-      fetch('/contents/'+ this.deletedid, d)
+      return fetch('/contents/' + this.deletedid, d)
         .then((e) => {
           e.json().then((j) => {
             console.log(j);
@@ -136,50 +136,35 @@ var app = new Vue({
             self.deletedstoreditemid = j[0].storeditemid;
           })
         })
-        .then(this.nullinput())
-        .then(this.deletestoreditem())
-        .then(this.deletecontent())
-      },
-      
-      nullinput: function() {
-        console.log("nullinputすすむ")
+        .then(self.nullinput)
+        .then(self.deletestoreditem)
+        .then(self.deletecontent)
+    },
+
+    nullinput: function () {
+      console.log("nullinputすすむ")
       const data = {
-          storeditemid: null
+        storeditemid: null
       };
       const headers = {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       };
       const d = {
-          headers: headers,
-          method: "PUT",
-          body: JSON.stringify(data)
+        headers: headers,
+        method: "PUT",
+        body: JSON.stringify(data)
       };
       var self = this;
       return fetch('/contents/' + this.deletedid, d)
-          .then((e) => {
-              e.json().then((j) => {
-              })
-          })
-      },
-      
-      deletestoreditem: function(){
-        console.log("deletestreditemすすむ")
-      const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-      const d = {
-        headers: headers,
-        method: "DELETE",
-      };
-      var self = this;
-      return fetch('/contents/' + this.deletedstoreditemid, d)
         .then((e) => {
-          e.json()
+          e.json().then((j) => {
           })
+        })
     },
-    deletecontent: function(){
+
+    deletestoreditem: function () {
+      console.log("self.deletedstoreditemid = " + this.deletedstoreditemid)
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -189,10 +174,27 @@ var app = new Vue({
         method: "DELETE",
       };
       var self = this;
-      return fetch('/storeditems/' + this.deletedid, d)
+      return fetch('/storeditems/' + this.deletedstoreditemid, d)
         .then((e) => {
           e.json()
-          })
+        })
+    },
+
+
+    deletecontent: function () {
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      const d = {
+        headers: headers,
+        method: "DELETE",
+      };
+      var self = this;
+      return fetch('/contents/' + this.deletedid, d)
+        .then((e) => {
+          e.json()
+        })
     },
 
     // storeditemdelete: function () {
@@ -211,11 +213,11 @@ var app = new Vue({
     //         self.readall();
     //         self.deletedid = ""
     //       })
-        
+
     // },
     // contentdelete: function () {
 
-      
+
 
     //   ;
     //   const data = {
